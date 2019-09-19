@@ -215,6 +215,46 @@ user/main.obj: C:/ti/xdctools_3_51_03_28_core/packages/xdc/runtime/Types.h
 user/main.obj: C:/ti/bios_6_76_00_08/packages/ti/sysbios/interfaces/ITaskSupport.h
 user/main.obj: C:/ti/bios_6_76_00_08/packages/ti/sysbios/knl/Task__epilogue.h
 user/main.obj: C:/ti/bios_6_76_00_08/packages/ti/sysbios/knl/package/Task_SupportProxy.h
+user/main.obj: C:/ti/bios_6_76_00_08/packages/ti/sysbios/knl/Clock.h
+user/main.obj: C:/ti/bios_6_76_00_08/packages/ti/sysbios/knl/package/Clock_TimerProxy.h
+user/main.obj: C:/ti/bios_6_76_00_08/packages/ti/sysbios/hal/Hwi.h
+user/main.obj: C:/ti/xdctools_3_51_03_28_core/packages/xdc/runtime/Types.h
+user/main.obj: C:/ti/xdctools_3_51_03_28_core/packages/xdc/runtime/IInstance.h
+user/main.obj: C:/ti/bios_6_76_00_08/packages/ti/sysbios/hal/Hwi__prologue.h
+user/main.obj: C:/ti/bios_6_76_00_08/packages/ti/sysbios/hal/package/package.defs.h
+user/main.obj: C:/ti/xdctools_3_51_03_28_core/packages/xdc/runtime/Error.h
+user/main.obj: C:/ti/bios_6_76_00_08/packages/ti/sysbios/interfaces/IHwi.h
+user/main.obj: C:/ti/xdctools_3_51_03_28_core/packages/xdc/runtime/Types.h
+user/main.obj: C:/ti/xdctools_3_51_03_28_core/packages/xdc/runtime/IInstance.h
+user/main.obj: C:/ti/xdctools_3_51_03_28_core/packages/xdc/runtime/Error.h
+user/main.obj: C:/ti/xdctools_3_51_03_28_core/packages/xdc/runtime/IModule.h
+user/main.obj: C:/ti/bios_6_76_00_08/packages/ti/sysbios/hal/package/Hwi_HwiProxy.h
+user/main.obj: C:/ti/xdctools_3_51_03_28_core/packages/xdc/runtime/Types.h
+user/main.obj: C:/ti/xdctools_3_51_03_28_core/packages/xdc/runtime/IInstance.h
+user/main.obj: C:/ti/bios_6_76_00_08/packages/ti/sysbios/interfaces/IHwi.h
+user/main.obj: C:/ti/bios_6_76_00_08/packages/ti/sysbios/hal/Hwi__epilogue.h
+user/main.obj: C:/ti/bios_6_76_00_08/packages/ti/sysbios/family/c28/Hwi.h
+user/main.obj: C:/ti/xdctools_3_51_03_28_core/packages/xdc/runtime/Types.h
+user/main.obj: C:/ti/xdctools_3_51_03_28_core/packages/xdc/runtime/IInstance.h
+user/main.obj: C:/ti/bios_6_76_00_08/packages/ti/sysbios/family/c28/Hwi__prologue.h
+user/main.obj: C:/ti/bios_6_76_00_08/packages/ti/sysbios/family/c28/package/package.defs.h
+user/main.obj: C:/ti/xdctools_3_51_03_28_core/packages/xdc/runtime/Diags.h
+user/main.obj: C:/ti/xdctools_3_51_03_28_core/packages/xdc/runtime/Log.h
+user/main.obj: C:/ti/xdctools_3_51_03_28_core/packages/xdc/runtime/Assert.h
+user/main.obj: C:/ti/xdctools_3_51_03_28_core/packages/xdc/runtime/Error.h
+user/main.obj: C:/ti/bios_6_76_00_08/packages/ti/sysbios/interfaces/IHwi.h
+user/main.obj: C:/ti/bios_6_76_00_08/packages/ti/sysbios/family/c28/Hwi__epilogue.h
+user/main.obj: C:/ti/bios_6_76_00_08/packages/ti/sysbios/hal/package/Hwi_HwiProxy.h
+user/main.obj: C:/ti/bios_6_76_00_08/packages/ti/sysbios/hal/Timer.h
+user/main.obj: C:/ti/xdctools_3_51_03_28_core/packages/xdc/runtime/Types.h
+user/main.obj: C:/ti/xdctools_3_51_03_28_core/packages/xdc/runtime/IInstance.h
+user/main.obj: C:/ti/xdctools_3_51_03_28_core/packages/xdc/runtime/Error.h
+user/main.obj: C:/ti/bios_6_76_00_08/packages/ti/sysbios/interfaces/ITimer.h
+user/main.obj: C:/ti/bios_6_76_00_08/packages/ti/sysbios/hal/package/Timer_TimerProxy.h
+user/main.obj: C:/ti/xdctools_3_51_03_28_core/packages/xdc/runtime/Types.h
+user/main.obj: C:/ti/xdctools_3_51_03_28_core/packages/xdc/runtime/IInstance.h
+user/main.obj: C:/ti/bios_6_76_00_08/packages/ti/sysbios/interfaces/ITimer.h
+user/main.obj: C:/ti/bios_6_76_00_08/packages/ti/sysbios/hal/package/Timer_TimerProxy.h
 
 ../user/main.c: 
 D:/project/TiRTOS/28379test/inc/F28x_Project.h: 
@@ -431,3 +471,43 @@ C:/ti/xdctools_3_51_03_28_core/packages/xdc/runtime/Types.h:
 C:/ti/bios_6_76_00_08/packages/ti/sysbios/interfaces/ITaskSupport.h: 
 C:/ti/bios_6_76_00_08/packages/ti/sysbios/knl/Task__epilogue.h: 
 C:/ti/bios_6_76_00_08/packages/ti/sysbios/knl/package/Task_SupportProxy.h: 
+C:/ti/bios_6_76_00_08/packages/ti/sysbios/knl/Clock.h: 
+C:/ti/bios_6_76_00_08/packages/ti/sysbios/knl/package/Clock_TimerProxy.h: 
+C:/ti/bios_6_76_00_08/packages/ti/sysbios/hal/Hwi.h: 
+C:/ti/xdctools_3_51_03_28_core/packages/xdc/runtime/Types.h: 
+C:/ti/xdctools_3_51_03_28_core/packages/xdc/runtime/IInstance.h: 
+C:/ti/bios_6_76_00_08/packages/ti/sysbios/hal/Hwi__prologue.h: 
+C:/ti/bios_6_76_00_08/packages/ti/sysbios/hal/package/package.defs.h: 
+C:/ti/xdctools_3_51_03_28_core/packages/xdc/runtime/Error.h: 
+C:/ti/bios_6_76_00_08/packages/ti/sysbios/interfaces/IHwi.h: 
+C:/ti/xdctools_3_51_03_28_core/packages/xdc/runtime/Types.h: 
+C:/ti/xdctools_3_51_03_28_core/packages/xdc/runtime/IInstance.h: 
+C:/ti/xdctools_3_51_03_28_core/packages/xdc/runtime/Error.h: 
+C:/ti/xdctools_3_51_03_28_core/packages/xdc/runtime/IModule.h: 
+C:/ti/bios_6_76_00_08/packages/ti/sysbios/hal/package/Hwi_HwiProxy.h: 
+C:/ti/xdctools_3_51_03_28_core/packages/xdc/runtime/Types.h: 
+C:/ti/xdctools_3_51_03_28_core/packages/xdc/runtime/IInstance.h: 
+C:/ti/bios_6_76_00_08/packages/ti/sysbios/interfaces/IHwi.h: 
+C:/ti/bios_6_76_00_08/packages/ti/sysbios/hal/Hwi__epilogue.h: 
+C:/ti/bios_6_76_00_08/packages/ti/sysbios/family/c28/Hwi.h: 
+C:/ti/xdctools_3_51_03_28_core/packages/xdc/runtime/Types.h: 
+C:/ti/xdctools_3_51_03_28_core/packages/xdc/runtime/IInstance.h: 
+C:/ti/bios_6_76_00_08/packages/ti/sysbios/family/c28/Hwi__prologue.h: 
+C:/ti/bios_6_76_00_08/packages/ti/sysbios/family/c28/package/package.defs.h: 
+C:/ti/xdctools_3_51_03_28_core/packages/xdc/runtime/Diags.h: 
+C:/ti/xdctools_3_51_03_28_core/packages/xdc/runtime/Log.h: 
+C:/ti/xdctools_3_51_03_28_core/packages/xdc/runtime/Assert.h: 
+C:/ti/xdctools_3_51_03_28_core/packages/xdc/runtime/Error.h: 
+C:/ti/bios_6_76_00_08/packages/ti/sysbios/interfaces/IHwi.h: 
+C:/ti/bios_6_76_00_08/packages/ti/sysbios/family/c28/Hwi__epilogue.h: 
+C:/ti/bios_6_76_00_08/packages/ti/sysbios/hal/package/Hwi_HwiProxy.h: 
+C:/ti/bios_6_76_00_08/packages/ti/sysbios/hal/Timer.h: 
+C:/ti/xdctools_3_51_03_28_core/packages/xdc/runtime/Types.h: 
+C:/ti/xdctools_3_51_03_28_core/packages/xdc/runtime/IInstance.h: 
+C:/ti/xdctools_3_51_03_28_core/packages/xdc/runtime/Error.h: 
+C:/ti/bios_6_76_00_08/packages/ti/sysbios/interfaces/ITimer.h: 
+C:/ti/bios_6_76_00_08/packages/ti/sysbios/hal/package/Timer_TimerProxy.h: 
+C:/ti/xdctools_3_51_03_28_core/packages/xdc/runtime/Types.h: 
+C:/ti/xdctools_3_51_03_28_core/packages/xdc/runtime/IInstance.h: 
+C:/ti/bios_6_76_00_08/packages/ti/sysbios/interfaces/ITimer.h: 
+C:/ti/bios_6_76_00_08/packages/ti/sysbios/hal/package/Timer_TimerProxy.h: 
