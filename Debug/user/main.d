@@ -255,6 +255,7 @@ user/main.obj: C:/ti/xdctools_3_51_03_28_core/packages/xdc/runtime/Types.h
 user/main.obj: C:/ti/xdctools_3_51_03_28_core/packages/xdc/runtime/IInstance.h
 user/main.obj: C:/ti/bios_6_76_00_08/packages/ti/sysbios/interfaces/ITimer.h
 user/main.obj: C:/ti/bios_6_76_00_08/packages/ti/sysbios/hal/package/Timer_TimerProxy.h
+user/main.obj: C:/ti/bios_6_76_00_08/packages/ti/sysbios/knl/Swi.h
 
 ../user/main.c: 
 D:/project/TiRTOS/28379test/inc/F28x_Project.h: 
@@ -511,3 +512,4 @@ C:/ti/xdctools_3_51_03_28_core/packages/xdc/runtime/Types.h:
 C:/ti/xdctools_3_51_03_28_core/packages/xdc/runtime/IInstance.h: 
 C:/ti/bios_6_76_00_08/packages/ti/sysbios/interfaces/ITimer.h: 
 C:/ti/bios_6_76_00_08/packages/ti/sysbios/hal/package/Timer_TimerProxy.h: 
+C:/ti/bios_6_76_00_08/packages/ti/sysbios/knl/Swi.h: 

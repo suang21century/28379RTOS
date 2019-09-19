@@ -7,7 +7,7 @@ void InitCpu()
 //###########################################################################
 // 外设时钟和中断向量表初始化
 //###########################################################################
-  InitSysCtrl();
+//  InitSysCtrl();
 //  SeizeFlashPump();
 //  DINT;
 //  InitPieCtrl();
@@ -23,12 +23,25 @@ void InitCpu()
 //  // 初始化Timer
 //  InitCpuTimers();
 
-//  CpuTimer0Regs.PRD.all  = 200000000;    //周期设置 10k
-//  CpuTimer0Regs.TPR.all  = 0;           // 定时器不分频
-//  CpuTimer0Regs.TPRH.all = 0;
-//  CpuTimer0Regs.TIM.all = 0xffffffff;            // 计数从0开始
-//  CpuTimer0Regs.TCR.all = 0xC020;       // 中断使能,定时器启动   0xC020
-//  CpuTimer0Regs.TCR.bit.TSS = 0;    //start timer
+  CpuTimer0Regs.PRD.all  = 200000000;    //周期设置 10k
+  CpuTimer0Regs.TPR.all  = 0;           // 定时器不分频
+  CpuTimer0Regs.TPRH.all = 0;
+  CpuTimer0Regs.TIM.all = 0xffffffff;            // 计数从0开始
+  CpuTimer0Regs.TCR.all = 0xC020;       // 中断使能,定时器启动   0xC020
+  CpuTimer0Regs.TCR.bit.TSS = 0;    //start timer
+
+
+  //---------------------------gpio-------------------------//
+
+  GPIO_SetupPinMux(BLINKY_LED_GPIO, GPIO_MUX_CPU1, 0);
+  GPIO_SetupPinOptions(BLINKY_LED_GPIO, GPIO_OUTPUT, GPIO_PUSHPULL);
+  GPIO_WritePin(BLINKY_LED_GPIO, 1);
+  GPIO_SetupPinMux(BLINKY_LED_GPIO2, GPIO_MUX_CPU1, 0);
+  GPIO_SetupPinOptions(BLINKY_LED_GPIO2, GPIO_OUTPUT, GPIO_PUSHPULL);
+  GPIO_WritePin(BLINKY_LED_GPIO2, 1);
+
+
+
 ////###########################################################################
 //// pwm
 ////###########################################################################
