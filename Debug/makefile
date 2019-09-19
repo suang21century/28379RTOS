@@ -29,6 +29,7 @@ ORDERED_OBJS += \
 "./user/Initcpu.obj" \
 "./user/isr.obj" \
 "./user/main.obj" \
+"./user/task.obj" \
 "../cmd/F2837xD_Headers_BIOS_cpu1.cmd" \
 "../cmd/TMS320F28379D.cmd" \
 $(GEN_CMDS__FLAG) \
@@ -159,7 +160,7 @@ BIN_OUTPUTS__QUOTED += \
 
 # All Target
 all: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
-	@$(MAKE) --no-print-directory -Onone "RTOSdemo.out"
+	@$(MAKE) --no-print-directory -Onone "RTOSdemo.out" secondary-outputs
 
 # Tool invocations
 RTOSdemo.out: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
@@ -172,19 +173,21 @@ RTOSdemo.out: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
 RTOSdemo.hex: $(EXE_OUTPUTS)
 	@echo 'Building files: $(strip $(EXE_OUTPUTS__QUOTED))'
 	@echo 'Invoking: C2000 Hex Utility'
-	"D:/software/ti-cgt-c2000_18.12.1.LTS/bin/hex2000"  -o "RTOSdemo.hex" $(EXE_OUTPUTS__QUOTED)
+	"D:/software/ti-cgt-c2000_18.12.1.LTS/bin/hex2000" --memwidth=16 --romwidth=16 --intel -o "RTOSdemo.hex" $(EXE_OUTPUTS__QUOTED)
 	@echo 'Finished building: $(strip $(EXE_OUTPUTS__QUOTED))'
 	@echo ' '
 
 # Other Targets
 clean:
 	-$(RM) $(BIN_OUTPUTS__QUOTED)$(GEN_FILES__QUOTED)$(EXE_OUTPUTS__QUOTED)
-	-$(RM) "souce\F2837xD_Adc.obj" "souce\F2837xD_CodeStartBranch.obj" "souce\F2837xD_CpuTimers.obj" "souce\F2837xD_DefaultISR.obj" "souce\F2837xD_Emif.obj" "souce\F2837xD_GlobalVariableDefs.obj" "souce\F2837xD_Gpio.obj" "souce\F2837xD_Ipc.obj" "souce\F2837xD_Ipc_Driver.obj" "souce\F2837xD_Ipc_Driver_Lite.obj" "souce\F2837xD_Ipc_Driver_Util.obj" "souce\F2837xD_PieCtrl.obj" "souce\F2837xD_PieVect.obj" "souce\F2837xD_SysCtrl.obj" "souce\F2837xD_usDelay.obj" "user\InitCtrl.obj" "user\Initcpu.obj" "user\isr.obj" "user\main.obj" 
-	-$(RM) "souce\F2837xD_Adc.d" "souce\F2837xD_CpuTimers.d" "souce\F2837xD_DefaultISR.d" "souce\F2837xD_Emif.d" "souce\F2837xD_GlobalVariableDefs.d" "souce\F2837xD_Gpio.d" "souce\F2837xD_Ipc.d" "souce\F2837xD_Ipc_Driver.d" "souce\F2837xD_Ipc_Driver_Lite.d" "souce\F2837xD_Ipc_Driver_Util.d" "souce\F2837xD_PieCtrl.d" "souce\F2837xD_PieVect.d" "souce\F2837xD_SysCtrl.d" "user\InitCtrl.d" "user\Initcpu.d" "user\isr.d" "user\main.d" 
+	-$(RM) "souce\F2837xD_Adc.obj" "souce\F2837xD_CodeStartBranch.obj" "souce\F2837xD_CpuTimers.obj" "souce\F2837xD_DefaultISR.obj" "souce\F2837xD_Emif.obj" "souce\F2837xD_GlobalVariableDefs.obj" "souce\F2837xD_Gpio.obj" "souce\F2837xD_Ipc.obj" "souce\F2837xD_Ipc_Driver.obj" "souce\F2837xD_Ipc_Driver_Lite.obj" "souce\F2837xD_Ipc_Driver_Util.obj" "souce\F2837xD_PieCtrl.obj" "souce\F2837xD_PieVect.obj" "souce\F2837xD_SysCtrl.obj" "souce\F2837xD_usDelay.obj" "user\InitCtrl.obj" "user\Initcpu.obj" "user\isr.obj" "user\main.obj" "user\task.obj" 
+	-$(RM) "souce\F2837xD_Adc.d" "souce\F2837xD_CpuTimers.d" "souce\F2837xD_DefaultISR.d" "souce\F2837xD_Emif.d" "souce\F2837xD_GlobalVariableDefs.d" "souce\F2837xD_Gpio.d" "souce\F2837xD_Ipc.d" "souce\F2837xD_Ipc_Driver.d" "souce\F2837xD_Ipc_Driver_Lite.d" "souce\F2837xD_Ipc_Driver_Util.d" "souce\F2837xD_PieCtrl.d" "souce\F2837xD_PieVect.d" "souce\F2837xD_SysCtrl.d" "user\InitCtrl.d" "user\Initcpu.d" "user\isr.d" "user\main.d" "user\task.d" 
 	-$(RM) "souce\F2837xD_CodeStartBranch.d" "souce\F2837xD_usDelay.d" 
 	-$(RMDIR) $(GEN_MISC_DIRS__QUOTED)
 	-@echo 'Finished clean'
 	-@echo ' '
+
+secondary-outputs: $(BIN_OUTPUTS)
 
 .PHONY: all clean dependents
 .SECONDARY:

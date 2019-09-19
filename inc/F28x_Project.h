@@ -42,10 +42,18 @@ extern void InitCtrl(void);
 extern interrupt void adc1_isr(void);
 extern interrupt void sciarx_isr(void);
 
+extern Queue_Handle myQ;//定义队列
+extern Task_Handle task;//初始化任务
+extern Task_Handle task1;//初始化任务
 extern Swi_Handle swi;
+extern Void taskFxn(UArg a0, UArg a1);
+extern Void task1Fxn(UArg a0, UArg a1);
+extern Void swiFxn(UArg arg0, UArg arg1);
+extern Void clk0Fxn(UArg arg0);
 
 #define BLINKY_LED_GPIO 31
 #define BLINKY_LED_GPIO2 34
+
 typedef struct
 {
 Uint16     En;

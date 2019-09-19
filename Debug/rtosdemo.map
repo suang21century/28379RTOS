@@ -1,7 +1,7 @@
 ******************************************************************************
              TMS320C2000 Linker PC v18.12.1                    
 ******************************************************************************
->> Linked Thu Sep 19 22:12:19 2019
+>> Linked Thu Sep 19 22:37:39 2019
 
 OUTPUT FILE NAME:   <RTOSdemo.out>
 ENTRY POINT SYMBOL: "_c_int00"  address: 00089fe7
@@ -107,7 +107,7 @@ PAGE 1:
   OUTPUT_XBAR           00007a80   00000040  00000040  00000000  RWIX
   GPIOCTRL              00007c00   00000180  00000180  00000000  RWIX
   GPIODAT               00007f00   00000030  00000030  00000000  RWIX
-  LS05SARAM             00008000   00003000  00001379  00001c87  RWIX
+  LS05SARAM             00008000   00003000  00001377  00001c89  RWIX
   RAMGS0                0000c000   00001000  00000000  00001000  RWIX
   RAMGS1                0000d000   00001000  00000000  00001000  RWIX
   RAMGS2                0000e000   00001000  00000000  00001000  RWIX
@@ -223,7 +223,7 @@ codestart
                   00080002    00000002     F2837xD_CodeStartBranch.obj (codestart)
 
 .TI.ramfunc 
-*          0    0008002c    0000002d     RUN ADDR = 0000922c
+*          0    0008002c    0000002d     RUN ADDR = 0000922a
                   0008002c    00000029     F2837xD_SysCtrl.obj (.TI.ramfunc:_InitFlash)
                   00080055    00000004     F2837xD_usDelay.obj (.TI.ramfunc)
 
@@ -784,7 +784,7 @@ CpuSysRegsFile
                   0008240f    0000000f     app_p28FP.o28FP (.cinit:_ti_sysbios_heaps_HeapMem_Object__table__V)
                   0008241e    0000000e     rts2800_fpu32.lib : exit.c.obj (.cinit)
                   0008242c    0000000b     app_p28FP.o28FP (.cinit:_xdc_runtime_System_Module_State_0_atexitHandlers__A)
-                  00082437    00000008     main.obj (.cinit)
+                  00082437    00000008     task.obj (.cinit)
                   0008243f    00000005     rts2800_fpu32.lib : _lock.c.obj (.cinit:__lock)
                   00082444    00000005                       : _lock.c.obj (.cinit:__unlock)
                   00082449    00000005     app_p28FP.o28FP (.cinit:_ti_sysbios_gates_GateHwi_Object__table__V)
@@ -933,7 +933,7 @@ CpuSysRegsFile
                   0008b02d    00000016     app_p28FP.o28FP (.text:_ti_sysbios_BIOS_atExitFunc__I)
                   0008b043    00000016     sysbios.a28FP : BIOS.obj (.text:_ti_sysbios_family_c28_Timer_Module_startup__E)
                   0008b059    00000016     ti.targets.rts2800.a28FP : Text.o28FP (.text:_xdc_runtime_Text_printVisFxn__I)
-                  0008b06f    00000015     main.obj (.text:_task1Fxn)
+                  0008b06f    00000015     task.obj (.text:_task1Fxn)
                   0008b084    00000015     app_p28FP.o28FP (.text:_ti_sysbios_BIOS_startFunc__I)
                   0008b099    00000015     sysbios.a28FP : BIOS.obj (.text:_ti_sysbios_knl_Swi_Module_startup__E)
                   0008b0ae    00000014                   : BIOS.obj (.text:_ti_sysbios_knl_Idle_run__E)
@@ -985,7 +985,7 @@ CpuSysRegsFile
                   0008b34d    0000000c                   : BIOS.obj (.text:_ti_sysbios_knl_Task_enabled__E)
                   0008b359    0000000c     ti.targets.rts2800.a28FP : SysMin.o28FP (.text:_xdc_runtime_SysMin_exit__E)
                   0008b365    0000000c     rts2800_fpu32.lib : memset.c.obj (.text)
-                  0008b371    0000000b     main.obj (.text:_taskFxn)
+                  0008b371    0000000b     task.obj (.text:_taskFxn)
                   0008b37c    0000000b     app_p28FP.o28FP (.text:_ti_sysbios_family_c28_Hwi_Module__startupDone__F)
                   0008b387    0000000b     app_p28FP.o28FP (.text:_ti_sysbios_family_c28_Hwi_Object__get__S)
                   0008b392    0000000b     app_p28FP.o28FP (.text:_ti_sysbios_family_c28_Hwi_enableIER__E)
@@ -1151,7 +1151,7 @@ CpuSysRegsFile
                   0008b9d0    00000008     Boot.a28FP : Boot.o28FP (.text:.bootCodeSection:_ti_catalog_c2800_initF2837x_Boot_disableWatchdog)
                   0008b9d8    00000008                : Boot.o28FP (.text:.bootCodeSection:_ti_catalog_c2800_initF2837x_Boot_initSharedRAMs)
                   0008b9e0    00000008     F2837xD_CodeStartBranch.obj (.text)
-                  0008b9e8    00000008     main.obj (.text:_clk0Fxn)
+                  0008b9e8    00000008     task.obj (.text:_clk0Fxn)
                   0008b9f0    00000008     sysbios.a28FP : BIOS.obj (.text:_ti_sysbios_BIOS_setThreadType__E)
                   0008b9f8    00000008                   : BIOS.obj (.text:_ti_sysbios_gates_GateMutex_Instance_finalize__E)
                   0008ba00    00000008                   : BIOS.obj (.text:_ti_sysbios_knl_Semaphore_Instance_finalize__E)
@@ -1160,7 +1160,7 @@ CpuSysRegsFile
                   0008ba18    00000008                              : SysMin.o28FP (.text:_xdc_runtime_SysMin_ready__E)
                   0008ba20    00000008     rts2800_fpu32.lib : strlen.c.obj (.text)
                   0008ba28    00000007     app_p28FP.o28FP (.text:.bootCodeSection:_ti_catalog_c2800_initF2837x_Boot_initStartup)
-                  0008ba2f    00000007     main.obj (.text:_swiFxn)
+                  0008ba2f    00000007     task.obj (.text:_swiFxn)
                   0008ba36    00000007     sysbios.a28FP : BIOS.obj (.text:_ti_sysbios_knl_Queue_empty__E)
                   0008ba3d    00000007     app_p28FP.o28FP (.text:_xdc_runtime_System_aprintf__E)
                   0008ba44    00000007     app_p28FP.o28FP (.text:_xdc_runtime_System_printf__E)
@@ -1226,7 +1226,7 @@ CpuSysRegsFile
 
 ramfuncs   1    00008000    00000000     UNINITIALIZED
 
-.ebss      1    00008000    0000122c     UNINITIALIZED
+.ebss      1    00008000    0000122a     UNINITIALIZED
                   00008000    00000903     app_p28FP.o28FP (.ebss:taskStackSection)
                   00008903    00000001     --HOLE--
                   00008904    0000002a     app_p28FP.o28FP (.ebss:_ti_sysbios_knl_Task_Object__table__V)
@@ -1235,23 +1235,24 @@ ramfuncs   1    00008000    00000000     UNINITIALIZED
                   00008b40    00000200     app_p28FP.o28FP (.ebss:_xdc_runtime_SysMin_Module_State_0_outbuf__A)
                   00008d40    000001c0     app_p28FP.o28FP (.ebss:_ti_sysbios_family_c28_Hwi_Module_State_0_dispatchTable__A)
                   00008f00    00000114     isr.obj (.ebss)
-                  00009014    0000001e     main.obj (.ebss)
-                  00009032    0000000c     app_p28FP.o28FP (.ebss:_ti_sysbios_heaps_HeapMem_Object__table__V)
-                  0000903e    00000002     rts2800_fpu32.lib : _lock.c.obj (.ebss:__lock)
+                  00009014    0000001c     app_p28FP.o28FP (.ebss:_ti_sysbios_gates_GateMutex_Object__table__V)
+                  00009030    00000010     app_p28FP.o28FP (.ebss:_ti_sysbios_family_c28_Hwi_Object__table__V)
                   00009040    000000e0     app_p28FP.o28FP (.ebss)
-                  00009120    0000001c     app_p28FP.o28FP (.ebss:_ti_sysbios_gates_GateMutex_Object__table__V)
-                  0000913c    00000002     rts2800_fpu32.lib : _lock.c.obj (.ebss:__unlock)
-                  0000913e    00000002     app_p28FP.o28FP (.ebss:_ti_sysbios_gates_GateHwi_Object__table__V)
+                  00009120    0000001a     main.obj (.ebss)
+                  0000913a    00000006     rts2800_fpu32.lib : exit.c.obj (.ebss)
                   00009140    00000040     app_p28FP.o28FP (.ebss:_ti_sysbios_knl_Swi_Module_State_0_readyQ__A)
                   00009180    00000040     app_p28FP.o28FP (.ebss:_ti_sysbios_knl_Task_Module_State_0_readyQ__A)
                   000091c0    00000018     F2837xD_CpuTimers.obj (.ebss)
                   000091d8    00000018     app_p28FP.o28FP (.ebss:_ti_sysbios_family_c28_Timer_Object__table__V)
-                  000091f0    00000010     app_p28FP.o28FP (.ebss:_ti_sysbios_family_c28_Hwi_Object__table__V)
+                  000091f0    0000000c     app_p28FP.o28FP (.ebss:_ti_sysbios_heaps_HeapMem_Object__table__V)
+                  000091fc    00000002     rts2800_fpu32.lib : _lock.c.obj (.ebss:__lock)
+                  000091fe    00000002                       : _lock.c.obj (.ebss:__unlock)
                   00009200    00000014     app_p28FP.o28FP (.ebss:_ti_sysbios_knl_Swi_Object__table__V)
                   00009214    00000008     rts2800_fpu32.lib : hostopen.c.obj (.ebss:_parmbuf)
                   0000921c    00000008     app_p28FP.o28FP (.ebss:_xdc_runtime_System_Module_State_0_atexitHandlers__A)
-                  00009224    00000006     rts2800_fpu32.lib : exit.c.obj (.ebss)
-                  0000922a    00000002     app_p28FP.o28FP (.ebss:_ti_sysbios_knl_Task_Module_State_0_idleTask__A)
+                  00009224    00000002     app_p28FP.o28FP (.ebss:_ti_sysbios_gates_GateHwi_Object__table__V)
+                  00009226    00000002     app_p28FP.o28FP (.ebss:_ti_sysbios_knl_Task_Module_State_0_idleTask__A)
+                  00009228    00000002     task.obj (.ebss)
 
 .cio       1    00009280    00000120     UNINITIALIZED
                   00009280    00000120     rts2800_fpu32.lib : trgmsg.c.obj (.cio)
@@ -1307,10 +1308,11 @@ MODULE SUMMARY
     .\user\
        Initcpu.obj                      448     0                  0                 
        isr.obj                          88      0                  276               
-       main.obj                         177     88                 30                
+       main.obj                         130     80                 26                
+       task.obj                         47      8                  2                 
        InitCtrl.obj                     26      0                  0                 
     +--+--------------------------------+-------+------------------+--------------------+
-       Total:                           739     88                 306               
+       Total:                           739     88                 304               
                                                                                      
     D:\project\TiRTOS\28379test\Debug\configPkg\package\cfg\
        app_p28FP.o28FP                  1149    8471               4303              
@@ -1378,14 +1380,14 @@ MODULE SUMMARY
        Stack:                           0       0                  256               
        Linker Generated:                0       18                 0                 
     +--+--------------------------------+-------+------------------+--------------------+
-       Grand Total:                     15293   8927               12866             
+       Grand Total:                     15293   8927               12864             
 
 
 LINKER GENERATED COPY TABLES
 
 binit @ 00081ed4 records: 2, size/record: 8, table size: 18
 	.text:ti_catalog_c2800_initF2837x_flashfuncs: copy 39 bytes from load addr=00080004 at page=0 to run addr=0000b000 at page=0
-	.TI.ramfunc: copy 45 bytes from load addr=0008002c at page=0 to run addr=0000922c at page=1
+	.TI.ramfunc: copy 45 bytes from load addr=0008002c at page=0 to run addr=0000922a at page=1
 
 
 GLOBAL DATA SYMBOLS: SORTED BY DATA PAGE
@@ -1541,16 +1543,8 @@ address     data page           name
 
 00008f00     23c (00008f00)     _Uart
 
-00009014     240 (00009000)     _t
-00009015     240 (00009000)     _j
-00009016     240 (00009000)     _myQ
-00009018     240 (00009000)     _task
-0000901a     240 (00009000)     _task1
-0000901c     240 (00009000)     _swi
-0000901e     240 (00009000)     _clk2Handle
-00009020     240 (00009000)     _clk0Struct
-00009032     240 (00009000)     _ti_sysbios_heaps_HeapMem_Object__table__V
-0000903e     240 (00009000)     __lock
+00009014     240 (00009000)     _ti_sysbios_gates_GateMutex_Object__table__V
+00009030     240 (00009000)     _ti_sysbios_family_c28_Hwi_Object__table__V
 
 00009040     241 (00009040)     _xdc_runtime_Error_Module__state__V
 00009042     241 (00009040)     _xdc_runtime_Memory_Module__state__V
@@ -1584,9 +1578,14 @@ address     data page           name
 000090e2     243 (000090c0)     _ti_sysbios_knl_Clock_Module__state__V
 
 00009100     244 (00009100)     _ti_sysbios_knl_Task_Module__state__V
-00009120     244 (00009100)     _ti_sysbios_gates_GateMutex_Object__table__V
-0000913c     244 (00009100)     __unlock
-0000913e     244 (00009100)     _ti_sysbios_gates_GateHwi_Object__table__V
+00009120     244 (00009100)     _myQ
+00009122     244 (00009100)     _task
+00009124     244 (00009100)     _task1
+00009126     244 (00009100)     _swi
+00009128     244 (00009100)     _clk0Struct
+0000913a     244 (00009100)     ___TI_enable_exit_profile_output
+0000913c     244 (00009100)     ___TI_cleanup_ptr
+0000913e     244 (00009100)     ___TI_dtors_ptr
 
 00009140     245 (00009140)     _ti_sysbios_knl_Swi_Module_State_0_readyQ__A
 
@@ -1596,15 +1595,17 @@ address     data page           name
 000091c8     247 (000091c0)     _CpuTimer1
 000091d0     247 (000091c0)     _CpuTimer2
 000091d8     247 (000091c0)     _ti_sysbios_family_c28_Timer_Object__table__V
-000091f0     247 (000091c0)     _ti_sysbios_family_c28_Hwi_Object__table__V
+000091f0     247 (000091c0)     _ti_sysbios_heaps_HeapMem_Object__table__V
+000091fc     247 (000091c0)     __lock
+000091fe     247 (000091c0)     __unlock
 
 00009200     248 (00009200)     _ti_sysbios_knl_Swi_Object__table__V
 00009214     248 (00009200)     _parmbuf
 0000921c     248 (00009200)     _xdc_runtime_System_Module_State_0_atexitHandlers__A
-00009224     248 (00009200)     ___TI_enable_exit_profile_output
-00009226     248 (00009200)     ___TI_cleanup_ptr
-00009228     248 (00009200)     ___TI_dtors_ptr
-0000922a     248 (00009200)     _ti_sysbios_knl_Task_Module_State_0_idleTask__A
+00009224     248 (00009200)     _ti_sysbios_gates_GateHwi_Object__table__V
+00009226     248 (00009200)     _ti_sysbios_knl_Task_Module_State_0_idleTask__A
+00009228     248 (00009200)     _t
+00009229     248 (00009200)     _j
 
 00009280     24a (00009280)     __CIOBUF_
 
@@ -2030,7 +2031,7 @@ page  address   name
 1     00047800  _Emif2Regs                                                 
 0     00000d01  _EmuBMode                                                  
 0     00000d00  _EmuKey                                                    
-0     00009255  _F28x_usDelay                                              
+0     00009253  _F28x_usDelay                                              
 0     0008b6e1  _FLASH_CORRECTABLE_ERROR_ISR                               
 0     0008b6eb  _FPU_OVERFLOW_ISR                                          
 0     0008b6f5  _FPU_UNDERFLOW_ISR                                         
@@ -2059,7 +2060,7 @@ page  address   name
 0     0008b74f  _IPC3_ISR                                                  
 0     0008840f  _InitCpu                                                   
 0     0008ae2f  _InitCtrl                                                  
-0     0000922c  _InitFlash                                                 
+0     0000922a  _InitFlash                                                 
 0     00089a53  _InitPeripheralClocks                                      
 0     0008a6ab  _InitSysCtrl                                               
 1     00007900  _InputXbarRegs                                             
@@ -2154,9 +2155,9 @@ abs   00000100  __STACK_SIZE
 0     00000000  ___ISA__                                                   
 0     00000037  ___PLAT__                                                  
 0     00000013  ___TARG__                                                  
-1     00009226  ___TI_cleanup_ptr                                          
-1     00009228  ___TI_dtors_ptr                                            
-1     00009224  ___TI_enable_exit_profile_output                           
+1     0000913c  ___TI_cleanup_ptr                                          
+1     0000913e  ___TI_dtors_ptr                                            
+1     0000913a  ___TI_enable_exit_profile_output                           
 abs   ffffffff  ___TI_pprof_out_hndl                                       
 abs   ffffffff  ___TI_prof_data_size                                       
 abs   ffffffff  ___TI_prof_data_start                                      
@@ -2172,20 +2173,19 @@ abs   ffffffff  ___pinit__
 0     0008baa9  ___xdc__init                                               
 1     00009044  ___xdc__init__addr                                         
 0     0008af14  __args_main                                                
-1     0000903e  __lock                                                     
+1     000091fc  __lock                                                     
 0     0008b9cf  __nop                                                      
 0     0008b9cb  __register_lock                                            
 0     0008b9c7  __register_unlock                                          
 1     00000122  __stack                                                    
 0     0008bb10  __system_post_cinit                                        
 0     0008bb0a  __system_pre_init                                          
-1     0000913c  __unlock                                                   
+1     000091fe  __unlock                                                   
 0     0008aabb  _abort                                                     
 0     0008a63b  _adc1_isr                                                  
 0     00089fe7  _c_int00                                                   
 0     0008b9e8  _clk0Fxn                                                   
-1     00009020  _clk0Struct                                                
-1     0000901e  _clk2Handle                                                
+1     00009128  _clk0Struct                                                
 0     0008ab7b  _copy_in                                                   
 0     0008aabd  _exit                                                      
 1     0003fc00  _g_asIPCCPU1toCPU2Buffers                                  
@@ -2194,19 +2194,19 @@ abs   ffffffff  ___pinit__
 0     0003f880  _g_usGetWriteIndexes                                       
 0     0003f884  _g_usPutReadIndexes                                        
 1     0003fc80  _g_usPutWriteIndexes                                       
-1     00009015  _j                                                         
+1     00009229  _j                                                         
 0     00089cd1  _main                                                      
 0     0008ad51  _memcpy                                                    
 0     0008b365  _memset                                                    
-1     00009016  _myQ                                                       
+1     00009120  _myQ                                                       
 1     00009214  _parmbuf                                                   
 0     0008ac06  _sciarx_isr                                                
 0     0008ba20  _strlen                                                    
-1     0000901c  _swi                                                       
+1     00009126  _swi                                                       
 0     0008ba2f  _swiFxn                                                    
-1     00009014  _t                                                         
-1     00009018  _task                                                      
-1     0000901a  _task1                                                     
+1     00009228  _t                                                         
+1     00009122  _task                                                      
+1     00009124  _task1                                                     
 0     0008b06f  _task1Fxn                                                  
 0     0008b371  _taskFxn                                                   
 0     0008a312  _ti_catalog_c2800_initF2837x_Boot_configurePllDivs         
@@ -2257,7 +2257,7 @@ abs   ffffffff  ___pinit__
 0     00081ba3  _ti_sysbios_family_c28_Hwi_NUM_INTERRUPTS_ALL__C           
 0     00081c25  _ti_sysbios_family_c28_Hwi_Object__count__C                
 0     0008b387  _ti_sysbios_family_c28_Hwi_Object__get__S                  
-1     000091f0  _ti_sysbios_family_c28_Hwi_Object__table__V                
+1     00009030  _ti_sysbios_family_c28_Hwi_Object__table__V                
 0     00088eb3  _ti_sysbios_family_c28_Hwi_clearInterrupt__E               
 0     0008b329  _ti_sysbios_family_c28_Hwi_disableIER__E                   
 0     00089ad7  _ti_sysbios_family_c28_Hwi_disableInterrupt__E             
@@ -2312,7 +2312,7 @@ abs   ffffffff  ___pinit__
 0     00081d5a  _ti_sysbios_gates_GateHwi_Object__PARAMS__C                
 0     0008acc0  _ti_sysbios_gates_GateHwi_Object__create__S                
 0     0008b10e  _ti_sysbios_gates_GateHwi_Object__delete__S                
-1     0000913e  _ti_sysbios_gates_GateHwi_Object__table__V                 
+1     00009224  _ti_sysbios_gates_GateHwi_Object__table__V                 
 0     0008ba80  _ti_sysbios_gates_GateHwi_enter__E                         
 0     0008bab2  _ti_sysbios_gates_GateHwi_leave__E                         
 0     0008bb04  _ti_sysbios_gates_GateHwi_query__E                         
@@ -2331,7 +2331,7 @@ abs   ffffffff  ___pinit__
 0     00081d66  _ti_sysbios_gates_GateMutex_Object__PARAMS__C              
 0     0008acdd  _ti_sysbios_gates_GateMutex_Object__create__S              
 0     0008b0c2  _ti_sysbios_gates_GateMutex_Object__delete__S              
-1     00009120  _ti_sysbios_gates_GateMutex_Object__table__V               
+1     00009014  _ti_sysbios_gates_GateMutex_Object__table__V               
 0     00089e2d  _ti_sysbios_gates_GateMutex_enter__E                       
 0     0008b335  _ti_sysbios_gates_GateMutex_leave__E                       
 0     0008bb06  _ti_sysbios_gates_GateMutex_query__E                       
@@ -2374,7 +2374,7 @@ abs   ffffffff  ___pinit__
 0     0008acfa  _ti_sysbios_heaps_HeapMem_Object__create__S                
 0     0008b120  _ti_sysbios_heaps_HeapMem_Object__delete__S                
 0     0008b1ee  _ti_sysbios_heaps_HeapMem_Object__get__S                   
-1     00009032  _ti_sysbios_heaps_HeapMem_Object__table__V                 
+1     000091f0  _ti_sysbios_heaps_HeapMem_Object__table__V                 
 0     00088770  _ti_sysbios_heaps_HeapMem_allocUnprotected__E              
 0     0008a780  _ti_sysbios_heaps_HeapMem_alloc__E                         
 0     000885cf  _ti_sysbios_heaps_HeapMem_freeUnprotected__E               
@@ -2498,7 +2498,7 @@ abs   ffffffff  ___pinit__
 0     00081e32  _ti_sysbios_knl_Task_LD_ready__C                           
 0     00081e34  _ti_sysbios_knl_Task_LM_sleep__C                           
 0     00081e36  _ti_sysbios_knl_Task_LM_switch__C                          
-1     0000922a  _ti_sysbios_knl_Task_Module_State_0_idleTask__A            
+1     00009226  _ti_sysbios_knl_Task_Module_State_0_idleTask__A            
 1     00009180  _ti_sysbios_knl_Task_Module_State_0_readyQ__A              
 0     00081e38  _ti_sysbios_knl_Task_Module_State_inactiveQ__O             
 0     00081e3a  _ti_sysbios_knl_Task_Module__diagsEnabled__C               
@@ -2740,8 +2740,8 @@ page  address   name
 0     00000d00  _EmuKey                                                    
 0     00000d00  _PieVectTable                                              
 0     00000d01  _EmuBMode                                                  
-0     0000922c  _InitFlash                                                 
-0     00009255  _F28x_usDelay                                              
+0     0000922a  _InitFlash                                                 
+0     00009253  _F28x_usDelay                                              
 0     0000b000  _ti_catalog_c2800_initF2837x_Boot_initFlash                
 0     0003f800  _g_asIPCCPU2toCPU1Buffers                                  
 0     0003f880  _g_usGetWriteIndexes                                       
@@ -3489,16 +3489,8 @@ page  address   name
 1     00008b40  _xdc_runtime_SysMin_Module_State_0_outbuf__A               
 1     00008d40  _ti_sysbios_family_c28_Hwi_Module_State_0_dispatchTable__A 
 1     00008f00  _Uart                                                      
-1     00009014  _t                                                         
-1     00009015  _j                                                         
-1     00009016  _myQ                                                       
-1     00009018  _task                                                      
-1     0000901a  _task1                                                     
-1     0000901c  _swi                                                       
-1     0000901e  _clk2Handle                                                
-1     00009020  _clk0Struct                                                
-1     00009032  _ti_sysbios_heaps_HeapMem_Object__table__V                 
-1     0000903e  __lock                                                     
+1     00009014  _ti_sysbios_gates_GateMutex_Object__table__V               
+1     00009030  _ti_sysbios_family_c28_Hwi_Object__table__V                
 1     00009040  _xdc_runtime_Error_Module__state__V                        
 1     00009042  _xdc_runtime_Memory_Module__state__V                       
 1     00009044  ___xdc__init__addr                                         
@@ -3528,23 +3520,30 @@ page  address   name
 1     000090d0  _ti_sysbios_BIOS_Module__state__V                          
 1     000090e2  _ti_sysbios_knl_Clock_Module__state__V                     
 1     00009100  _ti_sysbios_knl_Task_Module__state__V                      
-1     00009120  _ti_sysbios_gates_GateMutex_Object__table__V               
-1     0000913c  __unlock                                                   
-1     0000913e  _ti_sysbios_gates_GateHwi_Object__table__V                 
+1     00009120  _myQ                                                       
+1     00009122  _task                                                      
+1     00009124  _task1                                                     
+1     00009126  _swi                                                       
+1     00009128  _clk0Struct                                                
+1     0000913a  ___TI_enable_exit_profile_output                           
+1     0000913c  ___TI_cleanup_ptr                                          
+1     0000913e  ___TI_dtors_ptr                                            
 1     00009140  _ti_sysbios_knl_Swi_Module_State_0_readyQ__A               
 1     00009180  _ti_sysbios_knl_Task_Module_State_0_readyQ__A              
 1     000091c0  _CpuTimer0                                                 
 1     000091c8  _CpuTimer1                                                 
 1     000091d0  _CpuTimer2                                                 
 1     000091d8  _ti_sysbios_family_c28_Timer_Object__table__V              
-1     000091f0  _ti_sysbios_family_c28_Hwi_Object__table__V                
+1     000091f0  _ti_sysbios_heaps_HeapMem_Object__table__V                 
+1     000091fc  __lock                                                     
+1     000091fe  __unlock                                                   
 1     00009200  _ti_sysbios_knl_Swi_Object__table__V                       
 1     00009214  _parmbuf                                                   
 1     0000921c  _xdc_runtime_System_Module_State_0_atexitHandlers__A       
-1     00009224  ___TI_enable_exit_profile_output                           
-1     00009226  ___TI_cleanup_ptr                                          
-1     00009228  ___TI_dtors_ptr                                            
-1     0000922a  _ti_sysbios_knl_Task_Module_State_0_idleTask__A            
+1     00009224  _ti_sysbios_gates_GateHwi_Object__table__V                 
+1     00009226  _ti_sysbios_knl_Task_Module_State_0_idleTask__A            
+1     00009228  _t                                                         
+1     00009229  _j                                                         
 1     00009280  __CIOBUF_                                                  
 1     0003fc00  _g_asIPCCPU1toCPU2Buffers                                  
 1     0003fc80  _g_usPutWriteIndexes                                       
@@ -3585,4 +3584,4 @@ abs   ffffffff  ___c_args__
 abs   ffffffff  ___pinit__                                                 
 abs   ffffffff  pinit                                                      
 
-[852 symbols]
+[851 symbols]
