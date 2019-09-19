@@ -80,9 +80,6 @@ digraph configuration {
         xdc_runtime_Text [style=filled,fillcolor=lightgray, label="Text"];
         xdc_runtime__top -> xdc_runtime_Text[style=invis];
         xdc_runtime_Text -> xdc_runtime__bot[style=invis];
-        xdc_runtime_Timestamp [style=filled,fillcolor=lightgray, label="Timestamp"];
-        xdc_runtime__top -> xdc_runtime_Timestamp[style=invis];
-        xdc_runtime_Timestamp -> xdc_runtime__bot[style=invis];
         xdc_runtime_LoggerBuf_TimestampProxy [style=filled,fillcolor=lightgray, label="LoggerBuf_TimestampProxy"];
         xdc_runtime__top -> xdc_runtime_LoggerBuf_TimestampProxy[style=invis];
         xdc_runtime_LoggerBuf_TimestampProxy -> xdc_runtime__bot[style=invis];
@@ -101,9 +98,6 @@ digraph configuration {
         xdc_runtime_System_Module_GateProxy [style=filled,fillcolor=lightgray, label="System_Module_GateProxy"];
         xdc_runtime__top -> xdc_runtime_System_Module_GateProxy[style=invis];
         xdc_runtime_System_Module_GateProxy -> xdc_runtime__bot[style=invis];
-        xdc_runtime_Timestamp_SupportProxy [style=filled,fillcolor=lightgray, label="Timestamp_SupportProxy"];
-        xdc_runtime__top -> xdc_runtime_Timestamp_SupportProxy[style=invis];
-        xdc_runtime_Timestamp_SupportProxy -> xdc_runtime__bot[style=invis];
     }
     subgraph cluster6 {
         label="";
@@ -260,14 +254,20 @@ digraph configuration {
     }
     subgraph cluster29 {
         label="";
-        ti_sysbios_hal__top [shape=box,label="ti.sysbios.hal\n2,0,0,0,1557944438772", color=white];
+        ti_sysbios_hal__top [shape=box,label="ti.sysbios.hal\n2,0,0,0,0", color=white];
         ti_sysbios_hal__bot [shape=point,label="", style=invis];
         ti_sysbios_hal_Hwi [style=filled,fillcolor=lightgray, label="Hwi"];
         ti_sysbios_hal__top -> ti_sysbios_hal_Hwi[style=invis];
         ti_sysbios_hal_Hwi -> ti_sysbios_hal__bot[style=invis];
+        ti_sysbios_hal_Timer [style=filled,fillcolor=lightgray, label="Timer"];
+        ti_sysbios_hal__top -> ti_sysbios_hal_Timer[style=invis];
+        ti_sysbios_hal_Timer -> ti_sysbios_hal__bot[style=invis];
         ti_sysbios_hal_Hwi_HwiProxy [style=filled,fillcolor=lightgray, label="Hwi_HwiProxy"];
         ti_sysbios_hal__top -> ti_sysbios_hal_Hwi_HwiProxy[style=invis];
         ti_sysbios_hal_Hwi_HwiProxy -> ti_sysbios_hal__bot[style=invis];
+        ti_sysbios_hal_Timer_TimerProxy [style=filled,fillcolor=lightgray, label="Timer_TimerProxy"];
+        ti_sysbios_hal__top -> ti_sysbios_hal_Timer_TimerProxy[style=invis];
+        ti_sysbios_hal_Timer_TimerProxy -> ti_sysbios_hal__bot[style=invis];
     }
     subgraph cluster30 {
         label="";

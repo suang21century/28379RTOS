@@ -92,82 +92,82 @@
     <logger>null</logger>
     <diagsMask>0000100000000000</diagsMask>
   </modMap>
-  <modMap key="xdc.runtime.Timestamp">
-    <id>32785</id>
-    <logger>null</logger>
-    <diagsMask>0000100000000000</diagsMask>
-  </modMap>
   <modMap key="ti.sysbios.family.c28.Hwi">
-    <id>32789</id>
+    <id>32788</id>
     <logger>xdc.runtime.LoggerBuf.Instance#0</logger>
     <diagsMask>0000110000000000</diagsMask>
   </modMap>
   <modMap key="ti.sysbios.family.c28.Timer">
-    <id>32790</id>
+    <id>32789</id>
     <logger>xdc.runtime.LoggerBuf.Instance#0</logger>
     <diagsMask>0000110000000000</diagsMask>
   </modMap>
   <modMap key="ti.sysbios.family.c28.IntrinsicsSupport">
-    <id>32791</id>
+    <id>32790</id>
     <logger>xdc.runtime.LoggerBuf.Instance#0</logger>
     <diagsMask>0000110000000000</diagsMask>
   </modMap>
   <modMap key="ti.sysbios.family.c28.TaskSupport">
-    <id>32792</id>
+    <id>32791</id>
     <logger>xdc.runtime.LoggerBuf.Instance#0</logger>
     <diagsMask>0000110000000000</diagsMask>
   </modMap>
   <modMap key="ti.sysbios.BIOS">
-    <id>32793</id>
+    <id>32792</id>
     <logger>xdc.runtime.LoggerBuf.Instance#0</logger>
     <diagsMask>0000110000000000</diagsMask>
   </modMap>
   <modMap key="ti.sysbios.knl.Clock">
-    <id>32795</id>
+    <id>32794</id>
     <logger>xdc.runtime.LoggerBuf.Instance#0</logger>
     <diagsMask>0000110000000000</diagsMask>
   </modMap>
   <modMap key="ti.sysbios.knl.Idle">
-    <id>32796</id>
+    <id>32795</id>
     <logger>xdc.runtime.LoggerBuf.Instance#0</logger>
     <diagsMask>0000110000000000</diagsMask>
   </modMap>
   <modMap key="ti.sysbios.knl.Intrinsics">
-    <id>32797</id>
+    <id>32796</id>
     <logger>xdc.runtime.LoggerBuf.Instance#0</logger>
     <diagsMask>0000110000000000</diagsMask>
   </modMap>
   <modMap key="ti.sysbios.knl.Queue">
-    <id>32798</id>
+    <id>32797</id>
     <logger>xdc.runtime.LoggerBuf.Instance#0</logger>
     <diagsMask>0000110000000000</diagsMask>
   </modMap>
   <modMap key="ti.sysbios.knl.Semaphore">
-    <id>32799</id>
+    <id>32798</id>
     <logger>xdc.runtime.LoggerBuf.Instance#0</logger>
     <diagsMask>0000110000000000</diagsMask>
   </modMap>
   <modMap key="ti.sysbios.knl.Swi">
-    <id>32800</id>
+    <id>32799</id>
     <logger>xdc.runtime.LoggerBuf.Instance#0</logger>
     <diagsMask>0000110000000000</diagsMask>
   </modMap>
   <modMap key="ti.sysbios.knl.Task">
-    <id>32801</id>
-    <logger>xdc.runtime.LoggerBuf.Instance#0</logger>
-    <diagsMask>0000110000000000</diagsMask>
-  </modMap>
-  <modMap key="ti.sysbios.gates.GateHwi">
-    <id>32803</id>
-    <logger>xdc.runtime.LoggerBuf.Instance#0</logger>
-    <diagsMask>0000110000000000</diagsMask>
-  </modMap>
-  <modMap key="ti.sysbios.gates.GateMutex">
-    <id>32804</id>
+    <id>32800</id>
     <logger>xdc.runtime.LoggerBuf.Instance#0</logger>
     <diagsMask>0000110000000000</diagsMask>
   </modMap>
   <modMap key="ti.sysbios.hal.Hwi">
+    <id>32802</id>
+    <logger>xdc.runtime.LoggerBuf.Instance#0</logger>
+    <diagsMask>0000110000000000</diagsMask>
+  </modMap>
+  <modMap key="ti.sysbios.hal.Timer">
+    <id>32803</id>
+    <logger>xdc.runtime.LoggerBuf.Instance#0</logger>
+    <diagsMask>0000110000000000</diagsMask>
+  </modMap>
+  <modMap key="ti.sysbios.gates.GateHwi">
+    <id>32805</id>
+    <logger>xdc.runtime.LoggerBuf.Instance#0</logger>
+    <diagsMask>0000110000000000</diagsMask>
+  </modMap>
+  <modMap key="ti.sysbios.gates.GateMutex">
     <id>32806</id>
     <logger>xdc.runtime.LoggerBuf.Instance#0</logger>
     <diagsMask>0000110000000000</diagsMask>

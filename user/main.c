@@ -21,13 +21,17 @@ Queue_Handle myQ;//定义队列
  */
 Void taskFxn(UArg a0, UArg a1)
 {
-    System_printf("enter taskFxn()\n");
-
-    Task_sleep(10);
-
-    System_printf("exit taskFxn()\n");
-
-    System_flush(); /* force SysMin output to console */
+  while(1)
+  {
+    GPIO_WritePin(BLINKY_LED_GPIO, 0);
+    Task_sleep(1000);
+    GPIO_WritePin(BLINKY_LED_GPIO, 1);
+    Task_sleep(1000);
+    GPIO_WritePin(BLINKY_LED_GPIO2, 0);
+    Task_sleep(500);
+    GPIO_WritePin(BLINKY_LED_GPIO2, 1);
+    Task_sleep(500);
+  }
 }
 
 /*
@@ -41,6 +45,14 @@ Int main()
 
     System_printf("enter main()\n");
 
+    //InitCpu();
+    //InitCtrl();
+    GPIO_SetupPinMux(BLINKY_LED_GPIO, GPIO_MUX_CPU1, 0);
+    GPIO_SetupPinOptions(BLINKY_LED_GPIO, GPIO_OUTPUT, GPIO_PUSHPULL);
+    GPIO_WritePin(BLINKY_LED_GPIO, 1);
+    GPIO_SetupPinMux(BLINKY_LED_GPIO2, GPIO_MUX_CPU1, 0);
+    GPIO_SetupPinOptions(BLINKY_LED_GPIO2, GPIO_OUTPUT, GPIO_PUSHPULL);
+    GPIO_WritePin(BLINKY_LED_GPIO2, 1);
     //创建队列
     myQ = Queue_create(NULL, NULL);
 

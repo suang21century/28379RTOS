@@ -42,10 +42,10 @@ PAGE 0 :  /* Program Memory */
     D01SARAM   : origin = 0x00B000, length = 0x001000
 
     /* Flash boot address */
-    BEGIN   : origin = 0x080000, length = 0x000002
+    BEGIN   : origin = 0x080000, length = 0x000004
 
     /* Flash sectors */
-    FLASHA  : origin = 0x080002, length = 0x001FFE  /* on-chip Flash */
+    FLASHA  : origin = 0x080004, length = 0x001FFC  /* on-chip Flash */
     FLASHB  : origin = 0x082000, length = 0x002000  /* on-chip Flash */
     FLASHC  : origin = 0x084000, length = 0x002000  /* on-chip Flash */
     FLASHD  : origin = 0x086000, length = 0x002000  /* on-chip Flash */
@@ -104,15 +104,9 @@ SECTIONS
     .binit              : > FLASHA | FLASHB | FLASHC | FLASHD | FLASHE |
                             FLASHF | FLASHG | FLASHH | FLASHI | FLASHJ |
                             FLASHK | FLASHL | FLASHM | FLASHN PAGE = 0
-#ifdef __TI_EABI__
-    .init_array         : > FLASHA | FLASHB | FLASHC | FLASHD | FLASHE |
-                            FLASHF | FLASHG | FLASHH | FLASHI | FLASHJ |
-                            FLASHK | FLASHL | FLASHM | FLASHN PAGE = 0
-#else
     .pinit              : > FLASHA | FLASHB | FLASHC | FLASHD | FLASHE |
                             FLASHF | FLASHG | FLASHH | FLASHI | FLASHJ |
                             FLASHK | FLASHL | FLASHM | FLASHN PAGE = 0
-#endif
     .text               : > FLASHA | FLASHB | FLASHC | FLASHD | FLASHE |
                             FLASHF | FLASHG | FLASHH | FLASHI | FLASHJ |
                             FLASHK | FLASHL | FLASHM | FLASHN PAGE = 0
@@ -140,26 +134,14 @@ SECTIONS
 
     /* Allocate uninitalized data sections: */
     .stack              : > M01SARAM | LS05SARAM    PAGE = 1
-#ifdef __TI_EABI__
-    .bss                : > M01SARAM | LS05SARAM    PAGE = 1
-    .sysmem             : > LS05SARAM | M01SARAM    PAGE = 1
-    .data               : > M01SARAM | LS05SARAM    PAGE = 1
-#else
     .ebss               : > M01SARAM | LS05SARAM    PAGE = 1
     .esysmem            : > LS05SARAM | M01SARAM    PAGE = 1
-#endif
     .cio                : > LS05SARAM | M01SARAM    PAGE = 1
 
     /* Initalized sections go in Flash */
-#ifdef __TI_EABI__
-    .const              : > FLASHA | FLASHB | FLASHC | FLASHD | FLASHE |
-                            FLASHF | FLASHG | FLASHH | FLASHI | FLASHJ |
-                            FLASHK | FLASHL | FLASHM | FLASHN PAGE = 0
-#else
     .econst             : > FLASHA | FLASHB | FLASHC | FLASHD | FLASHE |
                             FLASHF | FLASHG | FLASHH | FLASHI | FLASHJ |
                             FLASHK | FLASHL | FLASHM | FLASHN PAGE = 0
-#endif
     .switch             : > FLASHA | FLASHB | FLASHC | FLASHD | FLASHE |
                             FLASHF | FLASHG | FLASHH | FLASHI | FLASHJ |
                             FLASHK | FLASHL | FLASHM | FLASHN PAGE = 0

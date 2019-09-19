@@ -10,23 +10,27 @@ GEN_OPTS__FLAG := --cmd_file="configPkg/compiler.opt"
 GEN_CMDS__FLAG := -l"configPkg/linker.cmd"
 
 ORDERED_OBJS += \
-"./user/F2837xD_Adc.obj" \
-"./user/F2837xD_CpuTimers.obj" \
-"./user/F2837xD_DefaultISR.obj" \
-"./user/F2837xD_Emif.obj" \
-"./user/F2837xD_GlobalVariableDefs.obj" \
-"./user/F2837xD_Gpio.obj" \
-"./user/F2837xD_Ipc.obj" \
-"./user/F2837xD_Ipc_Driver.obj" \
-"./user/F2837xD_Ipc_Driver_Lite.obj" \
-"./user/F2837xD_Ipc_Driver_Util.obj" \
-"./user/F2837xD_PieCtrl.obj" \
-"./user/F2837xD_PieVect.obj" \
-"./user/F2837xD_SysCtrl.obj" \
-"./user/F2837xD_usDelay.obj" \
+"./souce/F2837xD_Adc.obj" \
+"./souce/F2837xD_CodeStartBranch.obj" \
+"./souce/F2837xD_CpuTimers.obj" \
+"./souce/F2837xD_DefaultISR.obj" \
+"./souce/F2837xD_Emif.obj" \
+"./souce/F2837xD_GlobalVariableDefs.obj" \
+"./souce/F2837xD_Gpio.obj" \
+"./souce/F2837xD_Ipc.obj" \
+"./souce/F2837xD_Ipc_Driver.obj" \
+"./souce/F2837xD_Ipc_Driver_Lite.obj" \
+"./souce/F2837xD_Ipc_Driver_Util.obj" \
+"./souce/F2837xD_PieCtrl.obj" \
+"./souce/F2837xD_PieVect.obj" \
+"./souce/F2837xD_SysCtrl.obj" \
+"./souce/F2837xD_usDelay.obj" \
+"./user/InitCtrl.obj" \
+"./user/Initcpu.obj" \
+"./user/isr.obj" \
 "./user/main.obj" \
-"../F2837xD_Headers_BIOS_cpu1.cmd" \
-"../TMS320F28379D.cmd" \
+"../cmd/F2837xD_Headers_BIOS_cpu1.cmd" \
+"../cmd/TMS320F28379D.cmd" \
 $(GEN_CMDS__FLAG) \
 -llibc.a \
 
@@ -38,8 +42,12 @@ RMDIR := RMDIR /S/Q
 # All of the sources participating in the build are defined here
 -include sources.mk
 -include subdir_vars.mk
+-include cmd/subdir_vars.mk
+-include souce/subdir_vars.mk
 -include user/subdir_vars.mk
 -include subdir_rules.mk
+-include cmd/subdir_rules.mk
+-include souce/subdir_rules.mk
 -include user/subdir_rules.mk
 -include objects.mk
 
@@ -137,43 +145,43 @@ endif
 
 # Add inputs and outputs from these tool invocations to the build variables 
 EXE_OUTPUTS += \
-rtosdemo.out \
+RTOSdemo.out \
 
 EXE_OUTPUTS__QUOTED += \
-"rtosdemo.out" \
+"RTOSdemo.out" \
 
 BIN_OUTPUTS += \
-rtosdemo.hex \
+RTOSdemo.hex \
 
 BIN_OUTPUTS__QUOTED += \
-"rtosdemo.hex" \
+"RTOSdemo.hex" \
 
 
 # All Target
 all: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
-	@$(MAKE) --no-print-directory -Onone "rtosdemo.out"
+	@$(MAKE) --no-print-directory -Onone "RTOSdemo.out"
 
 # Tool invocations
-rtosdemo.out: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
+RTOSdemo.out: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
 	@echo 'Building target: "$@"'
 	@echo 'Invoking: C2000 Linker'
-	"D:/software/ti-cgt-c2000_18.12.1.LTS/bin/cl2000" -v28 -ml -mt --cla_support=cla1 --float_support=fpu32 --tmu_support=tmu0 --vcu_support=vcu2 --define=CPU1 -g --diag_warning=225 --diag_warning=255 --diag_wrap=off --display_error_number --gen_func_subsections=on --abi=coffabi -z -m"rtosdemo.map" --stack_size=0x200 --warn_sections -i"D:/project/TiRTOS/28379test/FlashAPI" -i"D:/project/TiRTOS/28379test/inc" -i"D:/project/TiRTOS/28379test/user" -i"D:/software/ti-cgt-c2000_18.12.1.LTS/lib" -i"D:/software/ti-cgt-c2000_18.12.1.LTS/include" --reread_libs --diag_wrap=off --display_error_number --xml_link_info="rtosdemo_linkInfo.xml" --rom_model -o "rtosdemo.out" $(ORDERED_OBJS)
+	"D:/software/ti-cgt-c2000_18.12.1.LTS/bin/cl2000" -v28 -ml -mt --cla_support=cla1 --float_support=fpu32 --tmu_support=tmu0 --vcu_support=vcu2 --advice:performance=all --define=_FLASH --define=CPU1 -g --diag_warning=225 --diag_warning=255 --diag_wrap=off --display_error_number --gen_func_subsections=on --abi=coffabi -z -m"RTOSdemo.map" --stack_size=0x200 --warn_sections -i"D:/project/TiRTOS/28379test/souce" -i"D:/project/TiRTOS/28379test/cmd" -i"D:/project/TiRTOS/28379test/FlashAPI" -i"D:/project/TiRTOS/28379test/inc" -i"D:/project/TiRTOS/28379test/user" -i"D:/software/ti-cgt-c2000_18.12.1.LTS/lib" -i"D:/software/ti-cgt-c2000_18.12.1.LTS/include" --reread_libs --diag_wrap=off --display_error_number --xml_link_info="RTOSdemo_linkInfo.xml" --rom_model -o "RTOSdemo.out" $(ORDERED_OBJS)
 	@echo 'Finished building target: "$@"'
 	@echo ' '
 
-rtosdemo.hex: $(EXE_OUTPUTS)
+RTOSdemo.hex: $(EXE_OUTPUTS)
 	@echo 'Building files: $(strip $(EXE_OUTPUTS__QUOTED))'
 	@echo 'Invoking: C2000 Hex Utility'
-	"D:/software/ti-cgt-c2000_18.12.1.LTS/bin/hex2000"  -o "rtosdemo.hex" $(EXE_OUTPUTS__QUOTED)
+	"D:/software/ti-cgt-c2000_18.12.1.LTS/bin/hex2000"  -o "RTOSdemo.hex" $(EXE_OUTPUTS__QUOTED)
 	@echo 'Finished building: $(strip $(EXE_OUTPUTS__QUOTED))'
 	@echo ' '
 
 # Other Targets
 clean:
 	-$(RM) $(BIN_OUTPUTS__QUOTED)$(GEN_FILES__QUOTED)$(EXE_OUTPUTS__QUOTED)
-	-$(RM) "user\F2837xD_Adc.obj" "user\F2837xD_CpuTimers.obj" "user\F2837xD_DefaultISR.obj" "user\F2837xD_Emif.obj" "user\F2837xD_GlobalVariableDefs.obj" "user\F2837xD_Gpio.obj" "user\F2837xD_Ipc.obj" "user\F2837xD_Ipc_Driver.obj" "user\F2837xD_Ipc_Driver_Lite.obj" "user\F2837xD_Ipc_Driver_Util.obj" "user\F2837xD_PieCtrl.obj" "user\F2837xD_PieVect.obj" "user\F2837xD_SysCtrl.obj" "user\F2837xD_usDelay.obj" "user\main.obj" 
-	-$(RM) "user\F2837xD_Adc.d" "user\F2837xD_CpuTimers.d" "user\F2837xD_DefaultISR.d" "user\F2837xD_Emif.d" "user\F2837xD_GlobalVariableDefs.d" "user\F2837xD_Gpio.d" "user\F2837xD_Ipc.d" "user\F2837xD_Ipc_Driver.d" "user\F2837xD_Ipc_Driver_Lite.d" "user\F2837xD_Ipc_Driver_Util.d" "user\F2837xD_PieCtrl.d" "user\F2837xD_PieVect.d" "user\F2837xD_SysCtrl.d" "user\main.d" 
-	-$(RM) "user\F2837xD_usDelay.d" 
+	-$(RM) "souce\F2837xD_Adc.obj" "souce\F2837xD_CodeStartBranch.obj" "souce\F2837xD_CpuTimers.obj" "souce\F2837xD_DefaultISR.obj" "souce\F2837xD_Emif.obj" "souce\F2837xD_GlobalVariableDefs.obj" "souce\F2837xD_Gpio.obj" "souce\F2837xD_Ipc.obj" "souce\F2837xD_Ipc_Driver.obj" "souce\F2837xD_Ipc_Driver_Lite.obj" "souce\F2837xD_Ipc_Driver_Util.obj" "souce\F2837xD_PieCtrl.obj" "souce\F2837xD_PieVect.obj" "souce\F2837xD_SysCtrl.obj" "souce\F2837xD_usDelay.obj" "user\InitCtrl.obj" "user\Initcpu.obj" "user\isr.obj" "user\main.obj" 
+	-$(RM) "souce\F2837xD_Adc.d" "souce\F2837xD_CpuTimers.d" "souce\F2837xD_DefaultISR.d" "souce\F2837xD_Emif.d" "souce\F2837xD_GlobalVariableDefs.d" "souce\F2837xD_Gpio.d" "souce\F2837xD_Ipc.d" "souce\F2837xD_Ipc_Driver.d" "souce\F2837xD_Ipc_Driver_Lite.d" "souce\F2837xD_Ipc_Driver_Util.d" "souce\F2837xD_PieCtrl.d" "souce\F2837xD_PieVect.d" "souce\F2837xD_SysCtrl.d" "user\InitCtrl.d" "user\Initcpu.d" "user\isr.d" "user\main.d" 
+	-$(RM) "souce\F2837xD_CodeStartBranch.d" "souce\F2837xD_usDelay.d" 
 	-$(RMDIR) $(GEN_MISC_DIRS__QUOTED)
 	-@echo 'Finished clean'
 	-@echo ' '

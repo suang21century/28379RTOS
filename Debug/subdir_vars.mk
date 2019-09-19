@@ -8,10 +8,6 @@ SHELL = cmd.exe
 CFG_SRCS += \
 ../app.cfg 
 
-CMD_SRCS += \
-../F2837xD_Headers_BIOS_cpu1.cmd \
-../TMS320F28379D.cmd 
-
 GEN_CMDS += \
 ./configPkg/linker.cmd 
 
