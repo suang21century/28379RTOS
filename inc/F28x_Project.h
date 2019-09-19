@@ -22,11 +22,27 @@
 #include "F2837xD_Examples.h"      // F2837xD Examples Include File
 #include "math.h"
 
+#include <xdc/std.h>
+
+#include <xdc/runtime/Error.h>
+#include <xdc/runtime/System.h>
+
+#include <ti/sysbios/BIOS.h>
+#include <ti/sysbios/knl/Queue.h>
+#include <ti/sysbios/knl/Task.h>
+#include <ti/sysbios/knl/Clock.h>
+#include <ti/sysbios/hal/Hwi.h>
+#include <ti/sysbios/hal/Timer.h>
+#include <ti/sysbios/knl/Swi.h>
+
+
 extern void InitCpu(void);
 extern void InitCtrl(void);
 
 extern interrupt void adc1_isr(void);
 extern interrupt void sciarx_isr(void);
+
+extern Swi_Handle swi;
 
 #define BLINKY_LED_GPIO 31
 #define BLINKY_LED_GPIO2 34

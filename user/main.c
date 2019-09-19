@@ -2,18 +2,6 @@
  *  ======== main.c ========
  */
 #include <F28x_Project.h>
-#include <xdc/std.h>
-
-#include <xdc/runtime/Error.h>
-#include <xdc/runtime/System.h>
-
-#include <ti/sysbios/BIOS.h>
-#include <ti/sysbios/knl/Queue.h>
-#include <ti/sysbios/knl/Task.h>
-#include <ti/sysbios/knl/Clock.h>
-#include <ti/sysbios/hal/Hwi.h>
-#include <ti/sysbios/hal/Timer.h>
-#include <ti/sysbios/knl/Swi.h>
 
 Queue_Handle myQ;//定义队列
 
@@ -22,7 +10,7 @@ Task_Handle task1;//初始化任务
 
 Swi_Handle swi;
 
-Timer_Handle timer;
+//Timer_Handle timer;
 
 Void clk0Fxn(UArg arg0);
 Void clk1Fxn(UArg arg0);
@@ -79,14 +67,14 @@ Void swiFxn(UArg arg0, UArg arg1)
  */
 Int main()
 { 
-    Timer_Params timerParams;
+//    Timer_Params timerParams;
     Error_Block eb;
     Clock_Params clkParams;
 
     System_printf("enter main()\n");
 
     InitCpu();
-    //InitCtrl();
+    InitCtrl();
 
     //创建队列
     myQ = Queue_create(NULL, NULL);
@@ -130,5 +118,5 @@ Int main()
 Void clk0Fxn(UArg arg0)  //定时任务，与软中断同级，1s
 {
  GpioDataRegs.GPATOGGLE.bit.GPIO31=1;
- Swi_post(swi);
+
 }
