@@ -41,13 +41,11 @@ void InitCpu()
   GPIO_SetupPinOptions(BLINKY_LED_GPIO2, GPIO_OUTPUT, GPIO_PUSHPULL);
   GPIO_WritePin(BLINKY_LED_GPIO2, 1);
 
-  GpioCtrlRegs.GPAPUD.bit.GPIO0 = 1;    //(EPWM1A)
-  GpioCtrlRegs.GPAPUD.bit.GPIO1 = 1;    //(EPWM1B)
-  GpioCtrlRegs.GPAMUX1.bit.GPIO0 = 1;   // Configure GPIO0 as EPWM1A
-  GpioCtrlRegs.GPAMUX1.bit.GPIO1 = 1;   // Configure GPIO1 as EPWM1B
 
-  GPIO_SetupPinMux(0, GPIO_MUX_CPU1, 0);
-  GPIO_SetupPinMux(1, GPIO_MUX_CPU1, 0);
+  GPIO_SetupPinMux(0, GPIO_MUX_CPU1, 1);
+  GPIO_SetupPinMux(1, GPIO_MUX_CPU1, 1);
+  GPIO_SetupPinOptions(0, GPIO_OUTPUT, GPIO_PUSHPULL);
+  GPIO_SetupPinOptions(1, GPIO_OUTPUT, GPIO_PUSHPULL);
 //###########################################################################
 // pwm
 //###########################################################################
