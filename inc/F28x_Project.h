@@ -14,9 +14,8 @@
 #ifndef F28X_PROJECT_H
 #define F28X_PROJECT_H
 
-//
-// Included Files
-//
+//----------------------------------包含文件-----------------------------//
+
 #include "F2837xD_Cla_typedefs.h"  // F2837xD CLA Type definitions
 #include "F2837xD_device.h"        // F2837xD Headerfile Include File
 #include "F2837xD_Examples.h"      // F2837xD Examples Include File
@@ -34,8 +33,9 @@
 #include <ti/sysbios/hal/Hwi.h>
 #include <ti/sysbios/hal/Timer.h>
 #include <ti/sysbios/knl/Swi.h>
+#include <ti/sysbios/knl/Semaphore.h>
 
-
+//--------------------------函数声明----------------------------//
 extern void InitCpu(void);
 extern void InitCtrl(void);
 
@@ -43,9 +43,10 @@ extern interrupt void timer0_isr(void);
 extern interrupt void adc1_isr(void);
 extern interrupt void sciarx_isr(void);
 
-extern Queue_Handle myQ;//定义队列
-extern Task_Handle task;//初始化任务
-extern Task_Handle task1;//初始化任务
+extern Queue_Handle myQ;//声明队列
+extern Semaphore_Handle sem;//声明信号量
+extern Task_Handle task;//声明任务
+extern Task_Handle task1;
 extern Swi_Handle swi;
 extern Swi_Handle swi1;
 extern Void taskFxn(UArg a0, UArg a1);
@@ -54,9 +55,11 @@ extern Void swiFxn(UArg arg0, UArg arg1);
 extern Void swi1Fxn(UArg arg0, UArg arg1);
 extern Void clk0Fxn(UArg arg0);
 
+//-------------------------------宏定义--------------------------//
 #define BLINKY_LED_GPIO 31
 #define BLINKY_LED_GPIO2 34
 
+//-------------------------------结构体变量-------------------------//
 typedef struct
 {
 Uint16     En;

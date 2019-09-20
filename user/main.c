@@ -6,12 +6,13 @@
 Uart_REG Uart;
 
 Queue_Handle myQ;//定义队列
-Task_Handle task;//初始化任务
-Task_Handle task1;//初始化任务
-Swi_Handle swi;
+Task_Handle task;//定义任务
+Task_Handle task1;//定义任务
+Swi_Handle swi;  //定义软件中断
 Swi_Handle swi1;
+Clock_Struct clk0Struct;//定义时钟任务
+Semaphore_Handle sem;  //定义信号量
 //Timer_Handle timer;
-Clock_Struct clk0Struct;
 
 /*
  *  ======== main ========
@@ -29,7 +30,8 @@ Int main()
 
     //创建队列
     myQ = Queue_create(NULL, NULL);
-
+    //创建信号量
+    sem = Semaphore_create(0, NULL, &eb);
     //创建swi
     Error_init(&eb);
     swi = Swi_create(swiFxn, NULL, &eb);

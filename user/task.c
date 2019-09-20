@@ -8,24 +8,15 @@
 
 
 
-/*
- *  ======== taskFxn ========
- */
+//-------------------------------taskfunc-----------------------//
 Uint16 t=0,j=0,k=0;
 Void taskFxn(UArg a0, UArg a1)
 {
+
   while(1)
   {
-//    GPIO_WritePin(BLINKY_LED_GPIO, 0);
-//    Task_sleep(1000);
-//    GPIO_WritePin(BLINKY_LED_GPIO, 1);
-//    if(CpuTimer0Regs.TCR.bit.TIF==1)
-//    {
-//        CpuTimer0Regs.TCR.bit.TIF=1;
-        t++;
-//    }
-
-    Task_sleep(1000);
+    Semaphore_pend(sem, BIOS_WAIT_FOREVER);//接收信号量，未收到时堵塞在此
+    t++;
   }
 }
 Void task1Fxn(UArg a0, UArg a1)
@@ -39,29 +30,22 @@ Void task1Fxn(UArg a0, UArg a1)
   }
 }
 
-//Void hwiFxn(UArg arg)
-//{
-//  Swi_post(swi);
-//}
-
-/* ======== mySwiFunc ======== */
-Void swiFxn(UArg arg0, UArg arg1)
+//-------------------------swifunc-------------------------//
+Void swiFxn(UArg arg0, UArg arg1)//由adc硬件中断触发
 {
-//  while(1)
-//  {
     j++;
-//    DELAY_US(10000);
-//  }
 }
-Void swi1Fxn(UArg arg0, UArg arg1)
+Void swi1Fxn(UArg arg0, UArg arg1)//由timer0硬件中断触发
 {
-//  while(1)
-//  {
-    k++;
-//    DELAY_US(10000);
-//  }
+  k++;
+  if(k>9)
+  {
+    k=0;
+    Semaphore_post((Semaphore_Object *)sem);//发送信号量
+  }
 }
-Void clk0Fxn(UArg arg0)  //定时任务，与软中断同级，1s
+//---------------------clock task---------------------//
+Void clk0Fxn(UArg arg0)  //clock定时任务，与软中断同级，1s
 {
  GpioDataRegs.GPATOGGLE.bit.GPIO31=1;
 

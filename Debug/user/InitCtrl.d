@@ -256,6 +256,31 @@ user/InitCtrl.obj: C:/ti/xdctools_3_51_03_28_core/packages/xdc/runtime/IInstance
 user/InitCtrl.obj: C:/ti/bios_6_76_00_08/packages/ti/sysbios/interfaces/ITimer.h
 user/InitCtrl.obj: C:/ti/bios_6_76_00_08/packages/ti/sysbios/hal/package/Timer_TimerProxy.h
 user/InitCtrl.obj: C:/ti/bios_6_76_00_08/packages/ti/sysbios/knl/Swi.h
+user/InitCtrl.obj: C:/ti/bios_6_76_00_08/packages/ti/sysbios/knl/Semaphore.h
+user/InitCtrl.obj: C:/ti/xdctools_3_51_03_28_core/packages/xdc/runtime/Types.h
+user/InitCtrl.obj: C:/ti/xdctools_3_51_03_28_core/packages/xdc/runtime/IInstance.h
+user/InitCtrl.obj: C:/ti/bios_6_76_00_08/packages/ti/sysbios/knl/Semaphore__prologue.h
+user/InitCtrl.obj: C:/ti/xdctools_3_51_03_28_core/packages/xdc/runtime/Diags.h
+user/InitCtrl.obj: C:/ti/xdctools_3_51_03_28_core/packages/xdc/runtime/Log.h
+user/InitCtrl.obj: C:/ti/xdctools_3_51_03_28_core/packages/xdc/runtime/Assert.h
+user/InitCtrl.obj: C:/ti/xdctools_3_51_03_28_core/packages/xdc/runtime/Error.h
+user/InitCtrl.obj: C:/ti/bios_6_76_00_08/packages/ti/sysbios/knl/Queue.h
+user/InitCtrl.obj: C:/ti/bios_6_76_00_08/packages/ti/sysbios/knl/Task.h
+user/InitCtrl.obj: C:/ti/bios_6_76_00_08/packages/ti/sysbios/knl/Clock.h
+user/InitCtrl.obj: C:/ti/xdctools_3_51_03_28_core/packages/xdc/runtime/IModule.h
+user/InitCtrl.obj: C:/ti/bios_6_76_00_08/packages/ti/sysbios/knl/Event.h
+user/InitCtrl.obj: C:/ti/xdctools_3_51_03_28_core/packages/xdc/runtime/Types.h
+user/InitCtrl.obj: C:/ti/xdctools_3_51_03_28_core/packages/xdc/runtime/IInstance.h
+user/InitCtrl.obj: C:/ti/bios_6_76_00_08/packages/ti/sysbios/knl/Event__prologue.h
+user/InitCtrl.obj: C:/ti/xdctools_3_51_03_28_core/packages/xdc/runtime/Assert.h
+user/InitCtrl.obj: C:/ti/xdctools_3_51_03_28_core/packages/xdc/runtime/Diags.h
+user/InitCtrl.obj: C:/ti/xdctools_3_51_03_28_core/packages/xdc/runtime/Log.h
+user/InitCtrl.obj: C:/ti/bios_6_76_00_08/packages/ti/sysbios/knl/Queue.h
+user/InitCtrl.obj: C:/ti/bios_6_76_00_08/packages/ti/sysbios/knl/Clock.h
+user/InitCtrl.obj: C:/ti/bios_6_76_00_08/packages/ti/sysbios/knl/Task.h
+user/InitCtrl.obj: C:/ti/xdctools_3_51_03_28_core/packages/xdc/runtime/IModule.h
+user/InitCtrl.obj: C:/ti/bios_6_76_00_08/packages/ti/sysbios/knl/Event__epilogue.h
+user/InitCtrl.obj: C:/ti/bios_6_76_00_08/packages/ti/sysbios/knl/Semaphore__epilogue.h
 
 ../user/InitCtrl.c: 
 D:/project/TiRTOS/28379test/inc/F28x_Project.h: 
@@ -513,3 +538,28 @@ C:/ti/xdctools_3_51_03_28_core/packages/xdc/runtime/IInstance.h:
 C:/ti/bios_6_76_00_08/packages/ti/sysbios/interfaces/ITimer.h: 
 C:/ti/bios_6_76_00_08/packages/ti/sysbios/hal/package/Timer_TimerProxy.h: 
 C:/ti/bios_6_76_00_08/packages/ti/sysbios/knl/Swi.h: 
+C:/ti/bios_6_76_00_08/packages/ti/sysbios/knl/Semaphore.h: 
+C:/ti/xdctools_3_51_03_28_core/packages/xdc/runtime/Types.h: 
+C:/ti/xdctools_3_51_03_28_core/packages/xdc/runtime/IInstance.h: 
+C:/ti/bios_6_76_00_08/packages/ti/sysbios/knl/Semaphore__prologue.h: 
+C:/ti/xdctools_3_51_03_28_core/packages/xdc/runtime/Diags.h: 
+C:/ti/xdctools_3_51_03_28_core/packages/xdc/runtime/Log.h: 
+C:/ti/xdctools_3_51_03_28_core/packages/xdc/runtime/Assert.h: 
+C:/ti/xdctools_3_51_03_28_core/packages/xdc/runtime/Error.h: 
+C:/ti/bios_6_76_00_08/packages/ti/sysbios/knl/Queue.h: 
+C:/ti/bios_6_76_00_08/packages/ti/sysbios/knl/Task.h: 
+C:/ti/bios_6_76_00_08/packages/ti/sysbios/knl/Clock.h: 
+C:/ti/xdctools_3_51_03_28_core/packages/xdc/runtime/IModule.h: 
+C:/ti/bios_6_76_00_08/packages/ti/sysbios/knl/Event.h: 
+C:/ti/xdctools_3_51_03_28_core/packages/xdc/runtime/Types.h: 
+C:/ti/xdctools_3_51_03_28_core/packages/xdc/runtime/IInstance.h: 
+C:/ti/bios_6_76_00_08/packages/ti/sysbios/knl/Event__prologue.h: 
+C:/ti/xdctools_3_51_03_28_core/packages/xdc/runtime/Assert.h: 
+C:/ti/xdctools_3_51_03_28_core/packages/xdc/runtime/Diags.h: 
+C:/ti/xdctools_3_51_03_28_core/packages/xdc/runtime/Log.h: 
+C:/ti/bios_6_76_00_08/packages/ti/sysbios/knl/Queue.h: 
+C:/ti/bios_6_76_00_08/packages/ti/sysbios/knl/Clock.h: 
+C:/ti/bios_6_76_00_08/packages/ti/sysbios/knl/Task.h: 
+C:/ti/xdctools_3_51_03_28_core/packages/xdc/runtime/IModule.h: 
+C:/ti/bios_6_76_00_08/packages/ti/sysbios/knl/Event__epilogue.h: 
+C:/ti/bios_6_76_00_08/packages/ti/sysbios/knl/Semaphore__epilogue.h: 
