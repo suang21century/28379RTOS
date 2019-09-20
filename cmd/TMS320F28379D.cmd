@@ -98,20 +98,20 @@ PAGE 1 : /* Data Memory */
 SECTIONS
 {
     /* Allocate program areas: */
-    .cinit              : > FLASHA | FLASHB | FLASHC | FLASHD | FLASHE |
+    .cinit              : > //FLASHA | FLASHB | FLASHC | FLASHD | FLASHE |
                             FLASHF | FLASHG | FLASHH | FLASHI | FLASHJ |
                             FLASHK | FLASHL | FLASHM | FLASHN PAGE = 0
-    .binit              : > FLASHA | FLASHB | FLASHC | FLASHD | FLASHE |
+    .binit              : > //FLASHA | FLASHB | FLASHC | FLASHD | FLASHE |
                             FLASHF | FLASHG | FLASHH | FLASHI | FLASHJ |
                             FLASHK | FLASHL | FLASHM | FLASHN PAGE = 0
-    .pinit              : > FLASHA | FLASHB | FLASHC | FLASHD | FLASHE |
+    .pinit              : > //FLASHA | FLASHB | FLASHC | FLASHD | FLASHE |
                             FLASHF | FLASHG | FLASHH | FLASHI | FLASHJ |
                             FLASHK | FLASHL | FLASHM | FLASHN PAGE = 0
-    .text               : > FLASHA | FLASHB | FLASHC | FLASHD | FLASHE |
+    .text               : > //FLASHA | FLASHB | FLASHC | FLASHD | FLASHE |
                             FLASHF | FLASHG | FLASHH | FLASHI | FLASHJ |
                             FLASHK | FLASHL | FLASHM | FLASHN PAGE = 0
     codestart           : > BEGIN   PAGE = 0
-    ramfuncs            : LOAD = FLASHA | FLASHB | FLASHC | FLASHD | FLASHE |
+    ramfuncs            : LOAD = //FLASHA | FLASHB | FLASHC | FLASHD | FLASHE |
                                  FLASHF | FLASHG | FLASHH | FLASHI | FLASHJ |
                                  FLASHK | FLASHL | FLASHM | FLASHN PAGE = 0
                           RUN  = LS05SARAM  PAGE = 1
@@ -124,7 +124,7 @@ SECTIONS
 
 #ifdef __TI_COMPILER_VERSION__
 #if __TI_COMPILER_VERSION__ >= 15009000
-    .TI.ramfunc : {} LOAD = FLASHA | FLASHB | FLASHC | FLASHD | FLASHE |
+    .TI.ramfunc : {} LOAD = //FLASHA | FLASHB | FLASHC | FLASHD | FLASHE |
                             FLASHF | FLASHG | FLASHH | FLASHI | FLASHJ |
                             FLASHK | FLASHL | FLASHM | FLASHN PAGE = 0,
                      RUN  = LS05SARAM PAGE = 1,
@@ -139,13 +139,13 @@ SECTIONS
     .cio                : > LS05SARAM | M01SARAM    PAGE = 1
 
     /* Initalized sections go in Flash */
-    .econst             : > FLASHA | FLASHB | FLASHC | FLASHD | FLASHE |
+    .econst             : > //FLASHA | FLASHB | FLASHC | FLASHD | FLASHE |
                             FLASHF | FLASHG | FLASHH | FLASHI | FLASHJ |
                             FLASHK | FLASHL | FLASHM | FLASHN PAGE = 0
-    .switch             : > FLASHA | FLASHB | FLASHC | FLASHD | FLASHE |
+    .switch             : > //FLASHA | FLASHB | FLASHC | FLASHD | FLASHE |
                             FLASHF | FLASHG | FLASHH | FLASHI | FLASHJ |
                             FLASHK | FLASHL | FLASHM | FLASHN PAGE = 0
-    .args               : > FLASHA | FLASHB | FLASHC | FLASHD | FLASHE |
+    .args               : > //FLASHA | FLASHB | FLASHC | FLASHD | FLASHE |
                             FLASHF | FLASHG | FLASHH | FLASHI | FLASHJ |
                             FLASHK | FLASHL | FLASHM | FLASHN PAGE = 0
 

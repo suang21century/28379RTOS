@@ -70,7 +70,7 @@
 
 
 SECTIONS {
-    .text:ti_catalog_c2800_initF2837x_flashfuncs : LOAD = FLASHA PAGE = 0,
+    .text:ti_catalog_c2800_initF2837x_flashfuncs : LOAD = FLASHF PAGE = 0,
                                               RUN = D01SARAM PAGE = 0,
                                               table(BINIT)
 }
