@@ -47,10 +47,12 @@ extern Queue_Handle myQ;//声明队列
 extern Semaphore_Handle sem;//声明信号量
 extern Task_Handle task;//声明任务
 extern Task_Handle task1;
+extern Task_Handle task2;
 extern Swi_Handle swi;
 extern Swi_Handle swi1;
 extern Void taskFxn(UArg a0, UArg a1);
 extern Void task1Fxn(UArg a0, UArg a1);
+extern Void task2Fxn(UArg a0, UArg a1);
 extern Void swiFxn(UArg arg0, UArg arg1);
 extern Void swi1Fxn(UArg arg0, UArg arg1);
 extern Void clk0Fxn(UArg arg0);
@@ -60,6 +62,11 @@ extern Void clk0Fxn(UArg arg0);
 #define BLINKY_LED_GPIO2 34
 
 //-------------------------------结构体变量-------------------------//
+typedef struct Rec {
+Queue_Elem elem;
+Int data;
+} Rec;
+
 typedef struct
 {
 Uint16     En;

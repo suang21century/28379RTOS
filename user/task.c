@@ -29,7 +29,10 @@ Void task1Fxn(UArg a0, UArg a1)
     Task_sleep(1000);
   }
 }
+Void task2Fxn(UArg a0, UArg a1)
+{
 
+}
 //-------------------------swifunc-------------------------//
 Void swiFxn(UArg arg0, UArg arg1)//由adc硬件中断触发
 {
