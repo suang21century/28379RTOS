@@ -8,13 +8,14 @@
 
 #include "F28x_Project.h"
 
-Rec r1;
-Rec* rp;
+//Rec r1;
+
 interrupt void timer0_isr(void)
 {
   Swi_post(swi1);
 
-  Queue_enqueue(myQ, &(r1.elem));
+//  if(r1.data++>2)r1.data=0;
+//  Queue_enqueue(myQ, &(r1.elem));
 
   CpuTimer0Regs.TCR.bit.TIF=1;
   PieCtrlRegs.PIEACK.all = PIEACK_GROUP1;

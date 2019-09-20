@@ -29,9 +29,37 @@ Void task1Fxn(UArg a0, UArg a1)
     Task_sleep(1000);
   }
 }
+//Rec* rp;
+Uint16 s=1000,cnt=0;
 Void task2Fxn(UArg a0, UArg a1)
 {
-
+//  while (1)
+//  {
+//    if(!Queue_empty(myQ))
+//    {
+//      rp = Queue_dequeue(myQ);
+//      switch(cnt)
+//      {
+//      case 0 :
+//        if(rp->data==0) cnt=1;
+//        else cnt=0;
+//      case 1:
+//        if(rp->data==1) cnt=2;
+//        else cnt=0;
+//      case 2:
+//        if(rp->data==2)
+//        {
+//          s--;
+//        }
+//        cnt=0;
+//      }
+//    }
+//  }
+  while(1)
+  {
+    s--;
+    Task_sleep(1000);
+  }
 }
 //-------------------------swifunc-------------------------//
 Void swiFxn(UArg arg0, UArg arg1)//由adc硬件中断触发

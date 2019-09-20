@@ -18,5 +18,6 @@ void InitCtrl()
   EINT;
   ERTM;
 
+//  r1.data=0;
 }
 

@@ -62,10 +62,11 @@ extern Void clk0Fxn(UArg arg0);
 #define BLINKY_LED_GPIO2 34
 
 //-------------------------------结构体变量-------------------------//
-typedef struct Rec {
-Queue_Elem elem;
-Int data;
-} Rec;
+//typedef struct Rec {
+//Queue_Elem elem;
+//Uint16 data;
+//} Rec;
+//extern Rec r1;
 
 typedef struct
 {
