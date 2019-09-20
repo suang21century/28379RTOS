@@ -13,6 +13,7 @@ Swi_Handle swi;  //定义软件中断
 Swi_Handle swi1;
 Clock_Struct clk0Struct;//定义时钟任务
 Semaphore_Handle sem;  //定义信号量
+Event_Handle myEvent; //定义事件，同switch
 //Timer_Handle timer;
 
 /*
@@ -35,6 +36,8 @@ Int main()
     myQ = Queue_create(NULL, NULL);
     //创建信号量
     sem = Semaphore_create(0, NULL, &eb);
+    //创建事件
+    myEvent = Event_create(NULL, &eb);
     //创建swi
     Error_init(&eb);
     swi = Swi_create(swiFxn, NULL, &eb);

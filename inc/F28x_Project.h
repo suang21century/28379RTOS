@@ -34,6 +34,7 @@
 #include <ti/sysbios/hal/Timer.h>
 #include <ti/sysbios/knl/Swi.h>
 #include <ti/sysbios/knl/Semaphore.h>
+#include <ti/sysbios/knl/Event.h>
 
 //--------------------------函数声明----------------------------//
 extern void InitCpu(void);
@@ -44,6 +45,7 @@ extern interrupt void adc1_isr(void);
 extern interrupt void sciarx_isr(void);
 
 extern Queue_Handle myQ;//声明队列
+extern Event_Handle myEvent;//声明事件
 extern Semaphore_Handle sem;//声明信号量
 extern Task_Handle task;//声明任务
 extern Task_Handle task1;

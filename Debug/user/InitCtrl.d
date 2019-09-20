@@ -281,6 +281,7 @@ user/InitCtrl.obj: C:/ti/bios_6_76_00_08/packages/ti/sysbios/knl/Task.h
 user/InitCtrl.obj: C:/ti/xdctools_3_51_03_28_core/packages/xdc/runtime/IModule.h
 user/InitCtrl.obj: C:/ti/bios_6_76_00_08/packages/ti/sysbios/knl/Event__epilogue.h
 user/InitCtrl.obj: C:/ti/bios_6_76_00_08/packages/ti/sysbios/knl/Semaphore__epilogue.h
+user/InitCtrl.obj: C:/ti/bios_6_76_00_08/packages/ti/sysbios/knl/Event.h
 
 ../user/InitCtrl.c: 
 D:/project/TiRTOS/28379test/inc/F28x_Project.h: 
@@ -563,3 +564,4 @@ C:/ti/bios_6_76_00_08/packages/ti/sysbios/knl/Task.h:
 C:/ti/xdctools_3_51_03_28_core/packages/xdc/runtime/IModule.h: 
 C:/ti/bios_6_76_00_08/packages/ti/sysbios/knl/Event__epilogue.h: 
 C:/ti/bios_6_76_00_08/packages/ti/sysbios/knl/Semaphore__epilogue.h: 
+C:/ti/bios_6_76_00_08/packages/ti/sysbios/knl/Event.h: 

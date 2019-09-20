@@ -30,13 +30,27 @@ Void task1Fxn(UArg a0, UArg a1)
   }
 }
 
-Uint16 s=1000,cnt=0,n=0;
+Uint16 s=1000,cnt=0;
 Void task2Fxn(UArg a0, UArg a1)
 {
+  UInt events;
   while(1)
   {
-    s--;
-    Task_sleep(1000);
+      events = Event_pend(myEvent, Event_Id_NONE,
+      Event_Id_00 + Event_Id_01 + Event_Id_02,
+      BIOS_WAIT_FOREVER);                       //接收事件，否则堵塞
+    if (events & Event_Id_00)  //根据事件id进入对应函数
+    {
+      s--;
+    }
+    if (events & Event_Id_01)
+    {
+      s++;
+    }
+    if (events & Event_Id_02)
+    {
+      s=s+10;
+    }
   }
 }
 //-------------------------swifunc-------------------------//
@@ -50,7 +64,7 @@ Void swi1Fxn(UArg arg0, UArg arg1)//由timer0硬件中断触发
 {
         if(!Queue_empty(myQ))
         {
-          rp = Queue_dequeue(myQ);
+          rp = Queue_dequeue(myQ);//出队列
           switch(cnt)
           {
           case 0 :
@@ -62,7 +76,7 @@ Void swi1Fxn(UArg arg0, UArg arg1)//由timer0硬件中断触发
           case 2:
             if(rp->data==2)
             {
-              n--;
+                Event_post(myEvent, Event_Id_00);//发送id0事件
             }
             cnt=0;
           }

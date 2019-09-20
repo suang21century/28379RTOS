@@ -8,14 +8,16 @@
 
 #include "F28x_Project.h"
 
-Rec r1;
+Rec r1;//队列待传量按此定义
 
 interrupt void timer0_isr(void)
 {
-  Swi_post(swi1);
+  Swi_post(swi1);//触发软件中断
 
   if(r1.data++>2)r1.data=0;
-  Queue_enqueue(myQ, &(r1.elem));
+  Queue_enqueue(myQ, &(r1.elem));//队列添加
+
+
 
   CpuTimer0Regs.TCR.bit.TIF=1;
   PieCtrlRegs.PIEACK.all = PIEACK_GROUP1;
