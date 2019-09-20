@@ -11,7 +11,7 @@
 /*
  *  ======== taskFxn ========
  */
-Uint16 t=0,j=0;
+Uint16 t=0,j=0,k=0;
 Void taskFxn(UArg a0, UArg a1)
 {
   while(1)
@@ -53,7 +53,14 @@ Void swiFxn(UArg arg0, UArg arg1)
 //    DELAY_US(10000);
 //  }
 }
-
+Void swi1Fxn(UArg arg0, UArg arg1)
+{
+//  while(1)
+//  {
+    k++;
+//    DELAY_US(10000);
+//  }
+}
 Void clk0Fxn(UArg arg0)  //定时任务，与软中断同级，1s
 {
  GpioDataRegs.GPATOGGLE.bit.GPIO31=1;

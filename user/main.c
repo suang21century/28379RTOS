@@ -3,15 +3,14 @@
  */
 #include <F28x_Project.h>
 
-Queue_Handle myQ;//定义队列
+Uart_REG Uart;
 
+Queue_Handle myQ;//定义队列
 Task_Handle task;//初始化任务
 Task_Handle task1;//初始化任务
-
 Swi_Handle swi;
-
+Swi_Handle swi1;
 //Timer_Handle timer;
-
 Clock_Struct clk0Struct;
 
 /*
@@ -36,6 +35,10 @@ Int main()
     swi = Swi_create(swiFxn, NULL, &eb);
     if (swi == NULL) {
         System_printf("Swi create failed");
+    }
+    swi1 = Swi_create(swi1Fxn, NULL, &eb);
+    if (swi1 == NULL) {
+        System_printf("Swi1 create failed");
     }
     //创建task任务
     Error_init(&eb);

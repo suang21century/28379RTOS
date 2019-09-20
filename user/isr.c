@@ -8,15 +8,13 @@
 
 #include "F28x_Project.h"
 
-Uart_REG Uart;
 
-
-//interrupt void timer0isr(void)
-//{
-//
-//    CpuTimer0Regs.TCR.bit.TIF=1;
-//    PieCtrlRegs.PIEACK.all = PIEACK_GROUP1;
-//}
+interrupt void timer0_isr(void)
+{
+    Swi_post(swi1);
+    CpuTimer0Regs.TCR.bit.TIF=1;
+    PieCtrlRegs.PIEACK.all = PIEACK_GROUP1;
+}
 interrupt void adc1_isr(void)//10khz
 {
     Swi_post(swi);

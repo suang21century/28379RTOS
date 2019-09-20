@@ -39,6 +39,7 @@
 extern void InitCpu(void);
 extern void InitCtrl(void);
 
+extern interrupt void timer0_isr(void);
 extern interrupt void adc1_isr(void);
 extern interrupt void sciarx_isr(void);
 
@@ -46,9 +47,11 @@ extern Queue_Handle myQ;//定义队列
 extern Task_Handle task;//初始化任务
 extern Task_Handle task1;//初始化任务
 extern Swi_Handle swi;
+extern Swi_Handle swi1;
 extern Void taskFxn(UArg a0, UArg a1);
 extern Void task1Fxn(UArg a0, UArg a1);
 extern Void swiFxn(UArg arg0, UArg arg1);
+extern Void swi1Fxn(UArg arg0, UArg arg1);
 extern Void clk0Fxn(UArg arg0);
 
 #define BLINKY_LED_GPIO 31

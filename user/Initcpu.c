@@ -50,6 +50,7 @@ void InitCpu()
 // pwm
 //###########################################################################
   EALLOW;
+  ClkCfgRegs.PERCLKDIVSEL.bit.EPWMCLKDIV=0x1;    //pwm模块外设时钟分频，默认为2分频
   CpuSysRegs.PCLKCR0.bit.TBCLKSYNC = 0;// 禁止ePMW时钟
   EDIS;
            EPwm1Regs.TBCTL.bit.SYNCOSEL = 0;
