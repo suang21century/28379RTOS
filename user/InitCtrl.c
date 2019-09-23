@@ -9,7 +9,7 @@ void InitCtrl()
     PieVectTable.SCIA_RX_INT = &sciarx_isr;
     PieVectTable.TIMER0_INT = &timer0_isr;
   EDIS;
-
+  PieCtrlRegs.PIECTRL.bit.ENPIE = 1;
   IER |= M_INT1;
   IER |= M_INT9;
   PieCtrlRegs.PIEIER1.bit.INTx1 = 1; //adc1

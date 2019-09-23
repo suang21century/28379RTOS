@@ -12,11 +12,21 @@
 Uint16 t=0,j=0,k=0;
 Void taskFxn(UArg a0, UArg a1)
 {
-
+//    Uint16 done = 0;           // Test is not done yet
+//
+//       while(!done)        // wait until the DMA transfer is complete
+//       {
+//           EALLOW;
+//           DmaRegs.CH6.CONTROL.bit.PERINTFRC = 1;
+//           EDIS;
+//
+//           Task_sleep(1000);
+//       }
   while(1)
   {
     Semaphore_pend(sem, BIOS_WAIT_FOREVER);//接收信号量，未收到时堵塞在此
     t++;
+
   }
 }
 Void task1Fxn(UArg a0, UArg a1)
@@ -81,10 +91,16 @@ Void swi1Fxn(UArg arg0, UArg arg1)//由timer0硬件中断触发
             cnt=0;
           }
         }
+
+//  EALLOW;
+//  DmaRegs.CH6.CONTROL.bit.PERINTFRC = 1;
+//  EDIS;
+
   k++;
   if(k>9)
   {
     k=0;
+
     Semaphore_post((Semaphore_Object *)sem);//发送信号量
   }
 }

@@ -1,6 +1,28 @@
 
 #include "F28x_Project.h"
+#pragma DATA_SECTION(sdata, "ramgs0");  // 需在cmd定义相关内存
+#pragma DATA_SECTION(rdata, "ramgs1");
+#define BURST       31       //最大32个内存单元，每单元16bit
+#define TRANSFER    4        //4波发完128个单元
+Uint16 *DMADest;
+Uint16 *DMASource;
+Uint16 sdata[128];   // Send data buffer
+Uint16 rdata[128];   // Receive data buffer
+void dma_init()
+{
 
+    DMAInitialize();
+
+    DMASource = ( Uint16 *)sdata;
+    DMADest = (  Uint16 *)rdata;
+
+    DMACH6AddrConfig(DMADest,DMASource);
+    DMACH6BurstConfig(BURST,1,1);
+    DMACH6TransferConfig(TRANSFER,1,1);
+    DMACH6ModeConfig(68,PERINT_ENABLE,ONESHOT_ENABLE,CONT_ENABLE,        //触发源T0，中断使能，一次触发发送全部数据，连续使能
+                     SYNC_DISABLE,SYNC_SRC,OVRFLOW_DISABLE,SIXTEEN_BIT,
+                     CHINT_END,CHINT_ENABLE);
+}
 void InitCpu()
 {
 
@@ -164,7 +186,29 @@ void InitCpu()
   SciaRegs.SCIFFTX.all = 0xe010;//16字节fifo
   SciaRegs.SCIFFRX.all = 0x2028;//8个字节触发中断
   SciaRegs.SCIFFCT.all = 0x0000;
+//-----------------------------DMA--------------------------//
 
+//  DmaRegs.DMACTRL.bit.HARDRESET = 1;
+//  __asm (" nop");
+//  DmaRegs.DEBUGCTRL.bit.FREE = 1;
+//
+//
+//
+//  DmaRegs.CH6.SRC_BEG_ADDR_SHADOW =  (Uint32)(volatile Uint16 *)sdata;
+//  DmaRegs.CH6.SRC_ADDR_SHADOW =      (Uint32)(volatile Uint16 *)sdata;
+//  DmaRegs.CH6.DST_BEG_ADDR_SHADOW =  (Uint32)(volatile Uint16 *)rdata;
+//  DmaRegs.CH6.DST_ADDR_SHADOW =      (Uint32)(volatile Uint16 *)rdata;
+//  DmaRegs.DEBUGCTRL.bit.FREE = 1;
 
-
+  dma_init();
+  EALLOW;
+  CpuSysRegs.SECMSEL.bit.PF2SEL = 1;
+  EDIS;
+  Uint16 i;
+  for(i = 0; i < 128; i++)
+  {
+      sdata[i] = i;
+      rdata[i] = 0;
+  }
+  StartDMACH6();
 }

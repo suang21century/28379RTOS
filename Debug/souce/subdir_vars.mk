@@ -13,6 +13,7 @@ C_SRCS += \
 ../souce/F2837xD_Adc.c \
 ../souce/F2837xD_CpuTimers.c \
 ../souce/F2837xD_DefaultISR.c \
+../souce/F2837xD_Dma.c \
 ../souce/F2837xD_Emif.c \
 ../souce/F2837xD_GlobalVariableDefs.c \
 ../souce/F2837xD_Gpio.c \
@@ -28,6 +29,7 @@ C_DEPS += \
 ./souce/F2837xD_Adc.d \
 ./souce/F2837xD_CpuTimers.d \
 ./souce/F2837xD_DefaultISR.d \
+./souce/F2837xD_Dma.d \
 ./souce/F2837xD_Emif.d \
 ./souce/F2837xD_GlobalVariableDefs.d \
 ./souce/F2837xD_Gpio.d \
@@ -44,6 +46,7 @@ OBJS += \
 ./souce/F2837xD_CodeStartBranch.obj \
 ./souce/F2837xD_CpuTimers.obj \
 ./souce/F2837xD_DefaultISR.obj \
+./souce/F2837xD_Dma.obj \
 ./souce/F2837xD_Emif.obj \
 ./souce/F2837xD_GlobalVariableDefs.obj \
 ./souce/F2837xD_Gpio.obj \
@@ -65,6 +68,7 @@ OBJS__QUOTED += \
 "souce\F2837xD_CodeStartBranch.obj" \
 "souce\F2837xD_CpuTimers.obj" \
 "souce\F2837xD_DefaultISR.obj" \
+"souce\F2837xD_Dma.obj" \
 "souce\F2837xD_Emif.obj" \
 "souce\F2837xD_GlobalVariableDefs.obj" \
 "souce\F2837xD_Gpio.obj" \
@@ -81,6 +85,7 @@ C_DEPS__QUOTED += \
 "souce\F2837xD_Adc.d" \
 "souce\F2837xD_CpuTimers.d" \
 "souce\F2837xD_DefaultISR.d" \
+"souce\F2837xD_Dma.d" \
 "souce\F2837xD_Emif.d" \
 "souce\F2837xD_GlobalVariableDefs.d" \
 "souce\F2837xD_Gpio.d" \
@@ -100,6 +105,7 @@ C_SRCS__QUOTED += \
 "../souce/F2837xD_Adc.c" \
 "../souce/F2837xD_CpuTimers.c" \
 "../souce/F2837xD_DefaultISR.c" \
+"../souce/F2837xD_Dma.c" \
 "../souce/F2837xD_Emif.c" \
 "../souce/F2837xD_GlobalVariableDefs.c" \
 "../souce/F2837xD_Gpio.c" \

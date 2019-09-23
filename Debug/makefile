@@ -14,6 +14,7 @@ ORDERED_OBJS += \
 "./souce/F2837xD_CodeStartBranch.obj" \
 "./souce/F2837xD_CpuTimers.obj" \
 "./souce/F2837xD_DefaultISR.obj" \
+"./souce/F2837xD_Dma.obj" \
 "./souce/F2837xD_Emif.obj" \
 "./souce/F2837xD_GlobalVariableDefs.obj" \
 "./souce/F2837xD_Gpio.obj" \
@@ -180,8 +181,8 @@ RTOSdemo.hex: $(EXE_OUTPUTS)
 # Other Targets
 clean:
 	-$(RM) $(BIN_OUTPUTS__QUOTED)$(GEN_FILES__QUOTED)$(EXE_OUTPUTS__QUOTED)
-	-$(RM) "souce\F2837xD_Adc.obj" "souce\F2837xD_CodeStartBranch.obj" "souce\F2837xD_CpuTimers.obj" "souce\F2837xD_DefaultISR.obj" "souce\F2837xD_Emif.obj" "souce\F2837xD_GlobalVariableDefs.obj" "souce\F2837xD_Gpio.obj" "souce\F2837xD_Ipc.obj" "souce\F2837xD_Ipc_Driver.obj" "souce\F2837xD_Ipc_Driver_Lite.obj" "souce\F2837xD_Ipc_Driver_Util.obj" "souce\F2837xD_PieCtrl.obj" "souce\F2837xD_PieVect.obj" "souce\F2837xD_SysCtrl.obj" "souce\F2837xD_usDelay.obj" "user\InitCtrl.obj" "user\Initcpu.obj" "user\isr.obj" "user\main.obj" "user\task.obj" 
-	-$(RM) "souce\F2837xD_Adc.d" "souce\F2837xD_CpuTimers.d" "souce\F2837xD_DefaultISR.d" "souce\F2837xD_Emif.d" "souce\F2837xD_GlobalVariableDefs.d" "souce\F2837xD_Gpio.d" "souce\F2837xD_Ipc.d" "souce\F2837xD_Ipc_Driver.d" "souce\F2837xD_Ipc_Driver_Lite.d" "souce\F2837xD_Ipc_Driver_Util.d" "souce\F2837xD_PieCtrl.d" "souce\F2837xD_PieVect.d" "souce\F2837xD_SysCtrl.d" "user\InitCtrl.d" "user\Initcpu.d" "user\isr.d" "user\main.d" "user\task.d" 
+	-$(RM) "souce\F2837xD_Adc.obj" "souce\F2837xD_CodeStartBranch.obj" "souce\F2837xD_CpuTimers.obj" "souce\F2837xD_DefaultISR.obj" "souce\F2837xD_Dma.obj" "souce\F2837xD_Emif.obj" "souce\F2837xD_GlobalVariableDefs.obj" "souce\F2837xD_Gpio.obj" "souce\F2837xD_Ipc.obj" "souce\F2837xD_Ipc_Driver.obj" "souce\F2837xD_Ipc_Driver_Lite.obj" "souce\F2837xD_Ipc_Driver_Util.obj" "souce\F2837xD_PieCtrl.obj" "souce\F2837xD_PieVect.obj" "souce\F2837xD_SysCtrl.obj" "souce\F2837xD_usDelay.obj" "user\InitCtrl.obj" "user\Initcpu.obj" "user\isr.obj" "user\main.obj" "user\task.obj" 
+	-$(RM) "souce\F2837xD_Adc.d" "souce\F2837xD_CpuTimers.d" "souce\F2837xD_DefaultISR.d" "souce\F2837xD_Dma.d" "souce\F2837xD_Emif.d" "souce\F2837xD_GlobalVariableDefs.d" "souce\F2837xD_Gpio.d" "souce\F2837xD_Ipc.d" "souce\F2837xD_Ipc_Driver.d" "souce\F2837xD_Ipc_Driver_Lite.d" "souce\F2837xD_Ipc_Driver_Util.d" "souce\F2837xD_PieCtrl.d" "souce\F2837xD_PieVect.d" "souce\F2837xD_SysCtrl.d" "user\InitCtrl.d" "user\Initcpu.d" "user\isr.d" "user\main.d" "user\task.d" 
 	-$(RM) "souce\F2837xD_CodeStartBranch.d" "souce\F2837xD_usDelay.d" 
 	-$(RMDIR) $(GEN_MISC_DIRS__QUOTED)
 	-@echo 'Finished clean'

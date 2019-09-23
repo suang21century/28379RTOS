@@ -154,6 +154,9 @@ SECTIONS
                             RAMGS10 | RAMGS11 | RAMGS12 | RAMGS13 | RAMGS14 |
                             RAMGS15 PAGE = 1
 
+   ramgs0           : > RAMGS0,    PAGE = 1
+   ramgs1           : > RAMGS1,    PAGE = 1  //添加定义，用于dma数据内存区
+
     /* The following section definitions are required when using the IPC API Drivers */
     GROUP : > CPU1TOCPU2RAM, PAGE = 1
     {
