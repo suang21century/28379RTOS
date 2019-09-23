@@ -42,7 +42,7 @@ extern void InitCtrl(void);
 
 extern interrupt void timer0_isr(void);
 extern interrupt void adc1_isr(void);
-extern interrupt void sciarx_isr(void);
+extern interrupt void scirx_isr(void);
 
 extern Queue_Handle myQ;//声明队列
 extern Event_Handle myEvent;//声明事件

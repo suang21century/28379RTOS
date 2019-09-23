@@ -8,21 +8,7 @@ Uint16 *DMADest;
 Uint16 *DMASource;
 Uint16 sdata[128];   // Send data buffer
 Uint16 rdata[128];   // Receive data buffer
-void dma_init()
-{
 
-    DMAInitialize();
-
-    DMASource = ( Uint16 *)sdata;
-    DMADest = (  Uint16 *)rdata;
-
-    DMACH6AddrConfig(DMADest,DMASource);
-    DMACH6BurstConfig(BURST,1,1);
-    DMACH6TransferConfig(TRANSFER,1,1);
-    DMACH6ModeConfig(68,PERINT_ENABLE,ONESHOT_ENABLE,CONT_ENABLE,        //触发源T0，中断使能，一次触发发送全部数据，连续使能
-                     SYNC_DISABLE,SYNC_SRC,OVRFLOW_DISABLE,SIXTEEN_BIT,
-                     CHINT_END,CHINT_ENABLE);
-}
 void InitCpu()
 {
 
@@ -46,6 +32,8 @@ void InitCpu()
 //  // 初始化Timer
 //  InitCpuTimers();
 
+
+  EALLOW;
   CpuTimer0Regs.PRD.all  = 200000000;    //周期设置 10k
   CpuTimer0Regs.TPR.all  = 0;           // 定时器不分频
   CpuTimer0Regs.TPRH.all = 0;
@@ -53,9 +41,15 @@ void InitCpu()
   CpuTimer0Regs.TCR.all = 0xC020;       // 中断使能,定时器启动   0xC020
   CpuTimer0Regs.TCR.bit.TSS = 0;    //start timer
 
-
+  ClkCfgRegs.LOSPCP.all = 0;// ==sysclk,默认值2，为sysclk/4
   //---------------------------gpio-------------------------//
 
+  //scic
+  GpioCtrlRegs.GPBGMUX2.bit.GPIO56 = 1;
+  GpioCtrlRegs.GPEGMUX1.bit.GPIO139 = 1;
+  GpioCtrlRegs.GPBMUX2.bit.GPIO56 = 2; //rx
+  GpioCtrlRegs.GPEMUX1.bit.GPIO139 = 2; //tx
+  //led
   GPIO_SetupPinMux(BLINKY_LED_GPIO, GPIO_MUX_CPU1, 0);
   GPIO_SetupPinOptions(BLINKY_LED_GPIO, GPIO_OUTPUT, GPIO_PUSHPULL);
   GPIO_WritePin(BLINKY_LED_GPIO, 1);
@@ -63,14 +57,15 @@ void InitCpu()
   GPIO_SetupPinOptions(BLINKY_LED_GPIO2, GPIO_OUTPUT, GPIO_PUSHPULL);
   GPIO_WritePin(BLINKY_LED_GPIO2, 1);
 
-
+  //pwm
   GPIO_SetupPinMux(0, GPIO_MUX_CPU1, 1);
   GPIO_SetupPinMux(1, GPIO_MUX_CPU1, 1);
   GPIO_SetupPinOptions(0, GPIO_OUTPUT, GPIO_PUSHPULL);
   GPIO_SetupPinOptions(1, GPIO_OUTPUT, GPIO_PUSHPULL);
-//###########################################################################
-// pwm
-//###########################################################################
+
+
+  EDIS;
+//-----------------------------------epwm---------------------------------------//
   EALLOW;
   ClkCfgRegs.PERCLKDIVSEL.bit.EPWMCLKDIV=0x1;    //pwm模块外设时钟分频，默认为2分频
   CpuSysRegs.PCLKCR0.bit.TBCLKSYNC = 0;// 禁止ePMW时钟
@@ -175,32 +170,28 @@ void InitCpu()
   AdcbRegs.ADCSOC0CTL.bit.ACQPS = 6; //sample window is 6 SYSCLK cycles
   AdcbRegs.ADCSOC0CTL.bit.TRIGSEL = 5;  //pwm1SOCA通道触发
   EDIS;
-  //******SCI初始化*****************************************
-  // 串口设置:8位,无校验,1位停止位,接收中断,中断在初始化完成后统一打开
-  //********************************************************
-  SciaRegs.SCICCR.all  = 0x0007; // 8bit 无校验 无地址
-  SciaRegs.SCICTL1.all = 0x0023; //
-  SciaRegs.SCICTL2.all = 0x0002;
-  SciaRegs.SCIHBAUD.all    = 0x0000;
-  SciaRegs.SCILBAUD.all    = 0x00D8; //  D8=11520026;//26=921600;
-  SciaRegs.SCIFFTX.all = 0xe010;//16字节fifo
-  SciaRegs.SCIFFRX.all = 0x2028;//8个字节触发中断
-  SciaRegs.SCIFFCT.all = 0x0000;
+//-------------------------------------SCIB------------------------------//
+  ScicRegs.SCICCR.all  = 0x0007; // 8bit 无校验 无地址
+  ScicRegs.SCICTL1.all = 0x0023; //
+  ScicRegs.SCICTL2.all = 0x0002;
+  ScicRegs.SCIHBAUD.all    = 0;
+  ScicRegs.SCILBAUD.all    = 0x00D8; //  D8=115200  26;//26=921600;
+  ScicRegs.SCIFFTX.all = 0xe010;//16字节fifo
+  ScicRegs.SCIFFRX.all = 0x2021;//8个字节触发中断
+  ScicRegs.SCIFFCT.all = 0x0000;
 //-----------------------------DMA--------------------------//
 
-//  DmaRegs.DMACTRL.bit.HARDRESET = 1;
-//  __asm (" nop");
-//  DmaRegs.DEBUGCTRL.bit.FREE = 1;
-//
-//
-//
-//  DmaRegs.CH6.SRC_BEG_ADDR_SHADOW =  (Uint32)(volatile Uint16 *)sdata;
-//  DmaRegs.CH6.SRC_ADDR_SHADOW =      (Uint32)(volatile Uint16 *)sdata;
-//  DmaRegs.CH6.DST_BEG_ADDR_SHADOW =  (Uint32)(volatile Uint16 *)rdata;
-//  DmaRegs.CH6.DST_ADDR_SHADOW =      (Uint32)(volatile Uint16 *)rdata;
-//  DmaRegs.DEBUGCTRL.bit.FREE = 1;
+  DMAInitialize();
 
-  dma_init();
+  DMASource = ( Uint16 *)sdata;
+  DMADest = (  Uint16 *)rdata;
+
+  DMACH6AddrConfig(DMADest,DMASource);
+  DMACH6BurstConfig(BURST,1,1);
+  DMACH6TransferConfig(TRANSFER,1,1);
+  DMACH6ModeConfig(68,PERINT_ENABLE,ONESHOT_ENABLE,CONT_ENABLE,        //触发源T0，中断使能，一次触发发送全部数据，连续使能
+                   SYNC_DISABLE,SYNC_SRC,OVRFLOW_DISABLE,SIXTEEN_BIT,
+                   CHINT_END,CHINT_ENABLE);
   EALLOW;
   CpuSysRegs.SECMSEL.bit.PF2SEL = 1;
   EDIS;

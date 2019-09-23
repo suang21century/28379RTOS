@@ -2163,7 +2163,7 @@ void xdc_runtime_Text_visitRope__I(xdc_runtime_Text_RopeId rope,
 xdc_Void ti_catalog_c2800_initF2837x_Boot_init(xdc_Void)
 {
     ti_catalog_c2800_initF2837x_Boot_disableWatchdog();
-    ti_catalog_c2800_initF2837x_Boot_configurePllDivs(40, 0, 1, 0);
+    ti_catalog_c2800_initF2837x_Boot_configurePllDivs(40, 0, 1, 1);
 
     ti_catalog_c2800_initF2837x_Boot_initSharedRAMs(0);
 }

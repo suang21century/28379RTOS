@@ -64,45 +64,66 @@ Void task2Fxn(UArg a0, UArg a1)
   }
 }
 //-------------------------swifunc-------------------------//
-Void swiFxn(UArg arg0, UArg arg1)//由adc硬件中断触发
+Void swiFxn(UArg arg0, UArg arg1)//由timer硬件中断触发
 {
-    j++;
+    ScicRegs.SCITXBUF.all=0x0088;
+      ScicRegs.SCITXBUF.all=0x0055;
+      ScicRegs.SCITXBUF.all=0x0055;
+      ScicRegs.SCITXBUF.all=0x00AA;
+      ScicRegs.SCITXBUF.all=0x00AA;
+      ScicRegs.SCITXBUF.all=0x0066;
+      ScicRegs.SCITXBUF.all=0x0066;
+    //  EALLOW;
+    //  DmaRegs.CH6.CONTROL.bit.PERINTFRC = 1;//用于手动软件触发
+      //DmaRegs.CH6.CONTROL.bit.HALT = 1;//dma挂起
+      //DmaRegs.CH6.CONTROL.bit.RUN = 1; //dma运行
+    //  EDIS;
+
+      k++;
+      if(k>9)
+      {
+        k=0;
+
+        Semaphore_post((Semaphore_Object *)sem);//发送信号量
+      }
 }
 
 Rec* rp;
-Void swi1Fxn(UArg arg0, UArg arg1)//由timer0硬件中断触发
+Void swi1Fxn(UArg arg0, UArg arg1)//由sci硬件中断触发
 {
-        if(!Queue_empty(myQ))
+
+        while(!Queue_empty(myQ))//队列非空
         {
           rp = Queue_dequeue(myQ);//出队列
           switch(cnt)
           {
-          case 0 :
-            if(rp->data==0) cnt=1;
-            else cnt=0;
-          case 1:
-            if(rp->data==1) cnt=2;
-            else cnt=0;
-          case 2:
-            if(rp->data==2)
-            {
-                Event_post(myEvent, Event_Id_00);//发送id0事件
-            }
-            cnt=0;
+            case 0 :
+              if(rp->data==0x55) cnt=1;
+              else cnt=0;
+            break;
+            case 1:
+              if(rp->data==0x01) cnt=2;
+              else cnt=0;
+            break;
+            case 2:
+              if(rp->data==0x02)
+              {
+                Event_post(myEvent, Event_Id_00);//发送id0事件，单次触发
+              }
+              if(rp->data==0x03)
+              {
+                Event_post(myEvent, Event_Id_01);//发送id1事件
+              }
+              if(rp->data==0x04)
+              {
+                Event_post(myEvent, Event_Id_02);//发送id2事件
+              }
+              cnt=0;
+            break;
           }
+
         }
 
-//  EALLOW;
-//  DmaRegs.CH6.CONTROL.bit.PERINTFRC = 1;
-//  EDIS;
-
-  k++;
-  if(k>9)
-  {
-    k=0;
-
-    Semaphore_post((Semaphore_Object *)sem);//发送信号量
-  }
 }
 //---------------------clock task---------------------//
 Void clk0Fxn(UArg arg0)  //clock定时任务，与软中断同级，1s

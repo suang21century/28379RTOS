@@ -12,32 +12,27 @@ Rec r1;//队列待传量按此定义
 
 interrupt void timer0_isr(void)
 {
-  Swi_post(swi1);//触发软件中断
-
-  if(r1.data++>2)r1.data=0;
-  Queue_enqueue(myQ, &(r1.elem));//队列添加
-
-
+  Swi_post(swi);//触发软件中断
 
   CpuTimer0Regs.TCR.bit.TIF=1;
   PieCtrlRegs.PIEACK.all = PIEACK_GROUP1;
 }
 interrupt void adc1_isr(void)//10khz
 {
-  Swi_post(swi);
+  //Swi_post(swi);
   AdcaRegs.ADCINTFLGCLR.bit.ADCINT1 = 1;                        //清ADC中断
   PieCtrlRegs.PIEACK.all = PIEACK_GROUP1;
 }
-interrupt void sciarx_isr(void)                   //
+interrupt void scirx_isr(void)                   //
 {
-    Uint16 i;
-    while(SciaRegs.SCIFFRX.bit.RXFFST>0)   // Rx的buffer中有数据未读
+    while(ScicRegs.SCIFFRX.bit.RXFFST>0)   // Rx的buffer中有数据未读
     {
-      i =SciaRegs.SCIRXBUF.all&0x00ff;     // 从接收buffer里读取数据
-
+      r1.data =ScicRegs.SCIRXBUF.all&0x00ff;     // 从接收buffer里读取数据
+      Queue_enqueue(myQ, &(r1.elem));//队列添加
     }
-  SciaRegs.SCIFFRX.bit.RXFFOVRCLR=1;   // Clear Overflow flag
-  SciaRegs.SCIFFRX.bit.RXFFINTCLR=1;   // Clear Interrupt flag
+    Swi_post(swi1);//触发软件中断
+  ScicRegs.SCIFFRX.bit.RXFFOVRCLR=1;   // Clear Overflow flag
+  ScicRegs.SCIFFRX.bit.RXFFINTCLR=1;   // Clear Interrupt flag
 
-  PieCtrlRegs.PIEACK.all =PIEACK_GROUP9;       // Issue PIE ack
+  PieCtrlRegs.PIEACK.all =PIEACK_GROUP8;       // Issue PIE ack
 }
