@@ -2,8 +2,8 @@
 #include "F28x_Project.h"
 #pragma DATA_SECTION(sdata, "ramgs0");  // 需在cmd定义相关内存
 #pragma DATA_SECTION(rdata, "ramgs1");
-#define BURST       31       //最大32个内存单元，每单元16bit
-#define TRANSFER    4        //4波发完128个单元
+#define BURST       7       //最大32个内存单元，每单元16bit，每波    个单元
+#define TRANSFER    15        //   波发完128个单元
 Uint16 *DMADest;
 Uint16 *DMASource;
 Uint16 sdata[128];   // Send data buffer
@@ -62,8 +62,23 @@ void InitCpu()
   GPIO_SetupPinMux(1, GPIO_MUX_CPU1, 1);
   GPIO_SetupPinOptions(0, GPIO_OUTPUT, GPIO_PUSHPULL);
   GPIO_SetupPinOptions(1, GPIO_OUTPUT, GPIO_PUSHPULL);
+  EDIS;
 
+  //spiC
+  EALLOW;
+  GpioCtrlRegs.GPDPUD.all &= 0xC3FFFFFF;
 
+  GpioCtrlRegs.GPDGMUX2.bit.GPIO122 = 0x1;
+  GpioCtrlRegs.GPDGMUX2.bit.GPIO123 = 0x1;
+  GpioCtrlRegs.GPDGMUX2.bit.GPIO124 = 0x1;
+  GpioCtrlRegs.GPDGMUX2.bit.GPIO125 = 0x1;
+
+  GpioCtrlRegs.GPDMUX2.bit.GPIO122 = 0x2;
+  GpioCtrlRegs.GPDMUX2.bit.GPIO123 = 0x2;
+  GpioCtrlRegs.GPDMUX2.bit.GPIO124 = 0x2;
+  GpioCtrlRegs.GPDMUX2.bit.GPIO125 = 0x2;
+
+  GpioCtrlRegs.GPDQSEL2.all |= 0x03F00000;
   EDIS;
 //-----------------------------------epwm---------------------------------------//
   EALLOW;
@@ -179,19 +194,21 @@ void InitCpu()
   ScicRegs.SCIFFTX.all = 0xe010;//16字节fifo
   ScicRegs.SCIFFRX.all = 0x2021;//8个字节触发中断
   ScicRegs.SCIFFCT.all = 0x0000;
+
+
 //-----------------------------DMA--------------------------//
 
   DMAInitialize();
 
-  DMASource = ( Uint16 *)sdata;
-  DMADest = (  Uint16 *)rdata;
+  DMASource =( Uint16 * )sdata;
+  DMADest = ( Uint16 * )rdata;
+  DMACH5AddrConfig(&SpicRegs.SPITXBUF,DMASource);
+  DMACH5BurstConfig(BURST,1,0);    //每波多少个单元，地址不递增
+  DMACH5TransferConfig(TRANSFER,1,0);  //多少波数据，地址不递增
+  DMACH5ModeConfig(DMA_SPICTX,PERINT_ENABLE,ONESHOT_DISABLE,CONT_DISABLE,
+                       SYNC_DISABLE,SYNC_SRC,OVRFLOW_DISABLE,SIXTEEN_BIT,
+                       CHINT_END,CHINT_ENABLE);
 
-  DMACH6AddrConfig(DMADest,DMASource);
-  DMACH6BurstConfig(BURST,1,1);
-  DMACH6TransferConfig(TRANSFER,1,1);
-  DMACH6ModeConfig(68,PERINT_ENABLE,ONESHOT_ENABLE,CONT_ENABLE,        //触发源T0，中断使能，一次触发发送全部数据，连续使能
-                   SYNC_DISABLE,SYNC_SRC,OVRFLOW_DISABLE,SIXTEEN_BIT,
-                   CHINT_END,CHINT_ENABLE);
   EALLOW;
   CpuSysRegs.SECMSEL.bit.PF2SEL = 1;
   EDIS;
@@ -201,5 +218,21 @@ void InitCpu()
       sdata[i] = i;
       rdata[i] = 0;
   }
-  StartDMACH6();
+
+
+
+//--------------------------SPIC-----------------------------//
+  /// <li> SPI初始化: 最高速10MHz,时钟上升沿输出数据
+  SpicRegs.SPICCR.bit.SPISWRESET = 1;
+  SpicRegs.SPICCR.all = 0x008F;         // SCK上升沿输出数据下降沿接收数据,16bit传输,不用回环
+  SpicRegs.SPICTL.all = 0x000E;         // 主动模式,使能ste,禁用中断
+  //SpicRegs.SPISTS.all = 0x00e0;
+  SpicRegs.SPIBRR.all     = 19;              // 最高波特率90MHz/9=10MHz
+  SpicRegs.SPIFFRX.all = 0x4444;        // 标志清零,复位,使能接收4个禁中断
+  SpicRegs.SPIFFTX.all = 0xe048;        // 复位,禁中断,发送完置位中断标志,fifo8
+  SpicRegs.SPIFFCT.all = 0;
+  SpicRegs.SPIPRI.all = 0x0020;
+  SpicRegs.SPIFFRX.bit.RXFIFORESET = 1; // 开启接收FIFO
+
+  StartDMACH5();
 }

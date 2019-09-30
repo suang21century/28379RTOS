@@ -47,6 +47,7 @@ extern interrupt void scirx_isr(void);
 extern Queue_Handle myQ;//声明队列
 extern Event_Handle myEvent;//声明事件
 extern Semaphore_Handle sem;//声明信号量
+extern Semaphore_Handle sem1;
 extern Task_Handle task;//声明任务
 extern Task_Handle task1;
 extern Task_Handle task2;
